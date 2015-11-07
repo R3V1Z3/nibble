@@ -1,0 +1,1158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Options</name>
+    <events>
+        <event-block sid="6332046123816526">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="9767984456592156" type="System" />
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="6981667342991524" type="Player">
+                    <param id="0" name="Instance variable">GameOver</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="5664845149960682" type="Player">
+                    <param id="0" name="Which">0</param>
+                    <param id="1" name="Speed">100</param>
+                </action>
+                <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="212776731362691" type="Player">
+                    <param id="0" name="Angle">player.Direction</param>
+                </action>
+            </actions>
+            <sub-events>
+                <comment>Create volume bars</comment>
+                <event-block sid="2751645984162378">
+                    <conditions>
+                        <condition id="-10" name="For" sid="2984535536067882" type="System">
+                            <param id="0" name="Name">&quot;Volume Bars&quot;</param>
+                            <param id="1" name="Start index">1</param>
+                            <param id="2" name="End index">10</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-3" name="Create object" sid="6415836491275042" type="System">
+                            <param id="0" name="Object to create">VolumeFX</param>
+                            <param id="1" name="Layer">&quot;Options&quot;</param>
+                            <param id="2" name="X">80 + loopindex * VolumeFx.Width</param>
+                            <param id="3" name="Y">130</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="9161667054845022" type="VolumeFX">
+                            <param id="0" name="Instance variable">Value</param>
+                            <param id="1" name="Value">loopindex * 10</param>
+                        </action>
+                        <action id="-3" name="Create object" sid="973307637478852" type="System">
+                            <param id="0" name="Object to create">VolumeAmbiance</param>
+                            <param id="1" name="Layer">&quot;Options&quot;</param>
+                            <param id="2" name="X">80 + loopindex * VolumeAmbiance.Width</param>
+                            <param id="3" name="Y">220</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="6019760223785331" type="VolumeAmbiance">
+                            <param id="0" name="Instance variable">Value</param>
+                            <param id="1" name="Value">loopindex * 10</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-block>
+        <event-group description="" sid="3160476772125237" title="Main Loop">
+            <sub-events>
+                <event-block sid="6654091897397961">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="6797357188821087" type="System">
+                            <param id="0" name="Interval (seconds)">0.015</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="1112219114218911" type="Player">
+                            <param id="0" name="Angle">player.CustomMovement.MovingAngle + 1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="8765250705543103">
+                            <conditions>
+                                <condition id="-8" name="Is boolean instance variable set" sid="3593900938397106" type="Player">
+                                    <param id="0" name="Instance variable">GameOver</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-17" name="Set layer scale" sid="8324766996031426" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">LayerScale(&quot;Grid&quot;) + OptionsScaleRate</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="2378417707042625" type="System">
+                                    <param id="0" name="Layer">&quot;Parallax&quot;</param>
+                                    <param id="1" name="Scale">LayerScale(&quot;Grid&quot;) + OptionsScaleRate</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="5914575218283062">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="9095933548217123" type="Player">
+                                    <param id="0" name="Instance variable">GameOver</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-17" name="Set layer scale" sid="3307347431015659" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">LayerScale(&quot;Grid&quot;) - OptionsScaleRate</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="2903649815712005" type="System">
+                                    <param id="0" name="Layer">&quot;Parallax&quot;</param>
+                                    <param id="1" name="Scale">LayerScale(&quot;Grid&quot;) - OptionsScaleRate</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1414548516732399">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="5806457845513055" type="System">
+                                    <param id="0" name="Object">VolumeFX</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="6812391511975085" type="VolumeFX">
+                                    <param id="0" name="Opacity">30</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="8607051772947271">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="807171200644288" type="VolumeFX">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">VolumeFX</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Set opacity" sid="8121816458245604" type="VolumeFX">
+                                            <param id="0" name="Opacity">100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="9760612998306141">
+                            <conditions>
+                                <condition id="-11" name="For Each" sid="6764545742771198" type="System">
+                                    <param id="0" name="Object">VolumeAmbiance</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="8709298010218155" type="VolumeAmbiance">
+                                    <param id="0" name="Opacity">30</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="8424675474881489">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6260476714091276" type="VolumeAmbiance">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">VolumeAmbiance</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-16" name="Set opacity" sid="8745400807733299" type="VolumeAmbiance">
+                                            <param id="0" name="Opacity">100</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="9183246224935717">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="5461579933092414" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-14" name="Toggle boolean" sid="409349383219582" type="Player">
+                            <param id="0" name="Instance variable">GameOver</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3484628772596986" title="Keyboard Events">
+            <sub-events>
+                <event-block sid="7754098329864774">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="13554437522754" type="Keyboard">
+                            <param id="0" name="Key">27 (Esc)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="1647235296399661" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="641395368254497" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="9384885205317762" type="System">
+                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="978721255564446">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="8836277912302365" type="Keyboard">
+                            <param id="0" name="Key">13 (Return)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="8195314336245983" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Toggle Touch control display</comment>
+                        <event-block sid="3343796901621488">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4082354972304373" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="4279227288589475" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="6660201766291001">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="7287339953687901" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7437635506467478" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Back to menu</comment>
+                        <event-block sid="1677842312053645">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6959093831786948" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="6031317584273495" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="9937469889859815" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Entry&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="9382359883510498" type="System">
+                                    <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="5683470485894289">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="7763925269470925" type="Keyboard">
+                            <param id="0" name="Key">40 (Down arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="2019866232527287" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="8343847058392639" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="9357291718286612">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6256925797138032" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">TextMenu.Count - 1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7441940596840155" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">TextMenu.Count - 1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="3455226346088614">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="6233383741540876" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="4658180152283062" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="730570608321853" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="4253321312965483">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5011611416052713" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="8872732925548192" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Left - lower volume</comment>
+                <event-block sid="3370462735797589">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="6990972201884924" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="9286046337837495" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Sound FX Volume</comment>
+                        <event-block sid="8937084027915061">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2991256728772346" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="4431501549546305" type="System">
+                                    <param id="0" name="Variable">VolumeFX</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Ambiance Volume</comment>
+                        <event-block sid="5241825830933182">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4066852507569832" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Subtract from" sid="4793309290202398" type="System">
+                                    <param id="0" name="Variable">VolumeAmbiance</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Toggle Touch control display</comment>
+                        <event-block sid="8131649916055194">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="274529715315152" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="8328812827148742" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="698043231196251">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="6663568853089106" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="2812745875124811" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Right - raise volume</comment>
+                <event-block sid="571518615498592">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="3258463067692015" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="5430729791684178" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Sound FX Volume</comment>
+                        <event-block sid="9393357839605752">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3037112670413462" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="3937667802626132" type="System">
+                                    <param id="0" name="Variable">VolumeFX</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Ambiance Volume</comment>
+                        <event-block sid="5187045979993911">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6257159003093796" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="1637296530595191" type="System">
+                                    <param id="0" name="Variable">VolumeAmbiance</param>
+                                    <param id="1" name="Value">10</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Toggle Touch control display</comment>
+                        <event-block sid="5627278159294437">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="136065213893128" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="6271943837308162" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="6198708943645638">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="4327704147458941" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="2249356084896891" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="88460543487464" title="Mouse Events">
+            <sub-events>
+                <comment>Handle Volume bar</comment>
+                <event-block sid="9788007075190032">
+                    <conditions>
+                        <condition id="2" name="Mouse button is down" sid="6163094114963546" type="Mouse">
+                            <param id="0" name="Mouse button">0</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="4695600254871442">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="1738450027001499" type="Mouse">
+                                    <param id="0" name="Object">VolumeFX</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="2843298925558821" type="System">
+                                    <param id="0" name="Variable">VolumeFX</param>
+                                    <param id="1" name="Value">VolumeFX.Value</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8251162684907112">
+                            <conditions>
+                                <condition id="7" name="Cursor is over object" sid="4673514477794599" type="Mouse">
+                                    <param id="0" name="Object">VolumeAmbiance</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5783157277580662" type="System">
+                                    <param id="0" name="Variable">VolumeAmbiance</param>
+                                    <param id="1" name="Value">VolumeAmbiance.Value</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Handle general Menu events</comment>
+                <event-block sid="5926020078046518">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="7539772091163396" type="Mouse">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="3184645013460968" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">TextMenu.ItemNumber</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="85197853487086" type="TextMenu">
+                            <param id="0" name="Instance variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Handle menu right clicks</comment>
+                        <event-block sid="9188181605578843">
+                            <conditions>
+                                <condition id="0" name="On click" sid="4992299957711045" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                </condition>
+                                <condition id="7" name="Cursor is over object" sid="1736936145458702" type="Mouse">
+                                    <param id="0" name="Object">TextMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="7307186388926959" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Back to menu</comment>
+                                <event-block sid="7750511781661026">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="9883654591900635" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Back to Menu (Esc)&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6310288832969814" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Entry&quot;</param>
+                                        </action>
+                                        <action id="-25" name="Go to layout (by name)" sid="6676451395665656" type="System">
+                                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Sound FX Volume</comment>
+                                <event-block sid="6998382391043106">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1868730712936678" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Sound FX Volume: &quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="6527472849328531" type="System">
+                                            <param id="0" name="Variable">VolumeFX</param>
+                                            <param id="1" name="Value">10</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Ambiance Volume</comment>
+                                <event-block sid="3969563186146072">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1740887350723699" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Ambiance Volume: &quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-11" name="Subtract from" sid="2898590091775693" type="System">
+                                            <param id="0" name="Variable">VolumeAmbiance</param>
+                                            <param id="1" name="Value">10</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Toggle Touch control display</comment>
+                                <event-block sid="5307250595306558">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6431837825652994" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;On-screen Touch controls: &quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="807796545823694" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="7092964053824528">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="1558817687647176" type="System">
+                                                    <param id="0" name="Variable">TouchControls</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">1</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="4232671134245249" type="System">
+                                                    <param id="0" name="Variable">TouchControls</param>
+                                                    <param id="1" name="Value">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Handle menu left clicks</comment>
+                        <event-block sid="5036119232460359">
+                            <conditions>
+                                <condition id="0" name="On click" sid="6587336062091414" type="Mouse">
+                                    <param id="0" name="Mouse button">2</param>
+                                    <param id="1" name="Click type">0</param>
+                                </condition>
+                                <condition id="7" name="Cursor is over object" sid="7688246198500194" type="Mouse">
+                                    <param id="0" name="Object">TextMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="9596900437557698" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Sound FX Volume</comment>
+                                <event-block sid="5817897646121065">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="7195511010313434" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Sound FX Volume: &quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="4512128274218435" type="System">
+                                            <param id="0" name="Variable">VolumeFX</param>
+                                            <param id="1" name="Value">10</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Ambiance Volume</comment>
+                                <event-block sid="3167205719889626">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="8909248083628142" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Ambiance Volume: &quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Add to" sid="328059069076948" type="System">
+                                            <param id="0" name="Variable">VolumeAmbiance</param>
+                                            <param id="1" name="Value">10</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="2091557297246683" title="Touch Events">
+            <sub-events>
+                <event-block sid="3621810874743677">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="7529154406508058" type="Touch">
+                            <param id="0" name="Object">VolumeFX</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="480632499573035" type="System">
+                            <param id="0" name="Variable">VolumeFX</param>
+                            <param id="1" name="Value">VolumeFX.Value</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="2929669844496957">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="3612009521140824" type="Touch">
+                            <param id="0" name="Object">VolumeAmbiance</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2335854137689169" type="System">
+                            <param id="0" name="Variable">VolumeAmbiance</param>
+                            <param id="1" name="Value">VolumeAmbiance.Value</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4602369709075735">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="4360582476760209" type="Touch">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="5117404728705612" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7098026926987607" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">TextMenu.ItemNumber</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Back to menu</comment>
+                        <event-block sid="6783076153850269">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="8906165617302253" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Back to Menu (Esc)&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="2450061191892056" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Entry&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="578631342931816" type="System">
+                                    <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Toggle Touch control display</comment>
+                        <event-block sid="2826082487678577">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9293696185482707" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;On-screen Touch controls: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Add to" sid="4941206439249054" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="6954764676496006">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="4637731449286789" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="9302874455059523" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Value">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="7559606352078608" title="Handle Options Menu">
+            <sub-events>
+                <comment>Handle highlighting of selected menu items</comment>
+                <event-block sid="4169377088333837">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="4618681786587864" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="197028035130599" type="TextMenu">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="0" name="Set text" sid="5850788929796513" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.ValueHover</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="6274086146001032">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="8644796396031559" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="9813088992021978" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="7337852620552658" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Sound FX Volume</comment>
+                        <event-block sid="8611625184999945">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9439287991139371" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Sound FX Volume: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="9326941658895499" type="TextMenu">
+                                    <param id="0" name="Text">TextMenu.ValueHover &amp; VolumeFX &amp; &quot;%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Ambiance Volume</comment>
+                        <event-block sid="8757336480930477">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9859389623857186" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Ambiance Volume: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="6587350977001095" type="TextMenu">
+                                    <param id="0" name="Text">TextMenu.ValueHover &amp; VolumeAmbiance &amp; &quot;%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>On-screen Touch controls</comment>
+                        <event-block sid="6802160698780398">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5721341166731168" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;On-screen Touch controls: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="7594828980950404">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="6276688399439315" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="479825502228027" type="TextMenu">
+                                            <param id="0" name="Text">TextMenu.ValueHover &amp; &quot;OFF&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="2589966131942351">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="6228123600317397" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="5601536744435316" type="TextMenu">
+                                            <param id="0" name="Text">TextMenu.ValueHover &amp; &quot;ON&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="8239572060091293">
+                    <conditions>
+                        <condition id="-7" inverted="1" name="Compare instance variable" sid="4752611611962139" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="3001030454940414" type="TextMenu">
+                            <param id="0" name="Opacity">50</param>
+                        </action>
+                        <action id="0" name="Set text" sid="9356772097799462" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="9225820986072562" type="TextMenu">
+                            <param id="0" name="Instance variable">SoundPlayed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Sound FX Volume</comment>
+                        <event-block sid="3368911595548307">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="1376434922577168" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Sound FX Volume: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="2373798930989324" type="TextMenu">
+                                    <param id="0" name="Text">TextMenu.Value &amp; VolumeFX &amp; &quot;%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Ambiance Volume</comment>
+                        <event-block sid="4057478421028979">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="2606312121166505" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Ambiance Volume: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Set text" sid="5388108223653635" type="TextMenu">
+                                    <param id="0" name="Text">TextMenu.Value &amp; VolumeAmbiance &amp; &quot;%&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>On-screen Touch controls</comment>
+                        <event-block sid="5645991567402896">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="8793973508715422" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;On-screen Touch controls: &quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="7569308275503719">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="3475165534178636" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="6970486366454756" type="TextMenu">
+                                            <param id="0" name="Text">TextMenu.Value &amp; &quot;OFF&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="7007912355514574">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="1809910187494756" type="System">
+                                            <param id="0" name="Variable">TouchControls</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">1</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="8592401203527835" type="TextMenu">
+                                            <param id="0" name="Text">TextMenu.Value &amp; &quot;ON&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="5164982938931939" title="Handle Fades">
+            <sub-events>
+                <comment>Handle grid fades</comment>
+                <event-block sid="9211093413372902">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="4555928155777888" type="Grid" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="9547236312631546" type="Grid" />
+                    </actions>
+                </event-block>
+                <event-block sid="888774638709877">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="7982930575796219" type="GridAlternate" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="5193408012287002" type="GridAlternate" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="4256209591506282" title="Value Constraints">
+            <sub-events>
+                <event-block sid="4488698238336848">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="2615747280178853" type="System">
+                            <param id="0" name="Variable">VolumeFX</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="2358984908456872" type="System">
+                            <param id="0" name="Variable">VolumeFX</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="3154997150347672">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="6627286567635091" type="System">
+                            <param id="0" name="Variable">VolumeFX</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="3982776294036958" type="System">
+                            <param id="0" name="Variable">VolumeFX</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="8351162338519038">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="5893939930348882" type="System">
+                            <param id="0" name="Variable">VolumeAmbiance</param>
+                            <param id="1" name="Comparison">3</param>
+                            <param id="2" name="Value">0</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="714897334184322" type="System">
+                            <param id="0" name="Variable">VolumeAmbiance</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="1696776376622967">
+                    <conditions>
+                        <condition id="-14" name="Compare variable" sid="9529449331963702" type="System">
+                            <param id="0" name="Variable">VolumeAmbiance</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="5526016776715406" type="System">
+                            <param id="0" name="Variable">VolumeAmbiance</param>
+                            <param id="1" name="Value">100</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="2502464608380577" title="End of Layout">
+            <sub-events>
+                <event-block sid="390035137754817">
+                    <conditions>
+                        <condition id="-3" name="On end of layout" sid="4027002868634076" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="9654229573664109" type="FadeIn">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="5239646418824009" type="FadeIn" />
+                        <action id="0" name="Set local value" sid="8667223854693133" type="WebStorage">
+                            <param id="0" name="Key">&quot;Ugotsta Nibble - Volume FX&quot;</param>
+                            <param id="1" name="Value">VolumeFX</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="8382291912562254" type="WebStorage">
+                            <param id="0" name="Key">&quot;Ugotsta Nibble - Volume Ambiance&quot;</param>
+                            <param id="1" name="Value">VolumeAmbiance</param>
+                        </action>
+                        <action id="0" name="Set local value" sid="3851187808086535" type="WebStorage">
+                            <param id="0" name="Key">&quot;Ugotsta Nibble - Touch Controls&quot;</param>
+                            <param id="1" name="Value">TouchControls</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

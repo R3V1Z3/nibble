@@ -1,0 +1,742 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Help</name>
+    <events>
+        <event-block sid="4252666659132184">
+            <conditions>
+                <condition id="-2" name="On start of layout" sid="226861645196026" type="System" />
+            </conditions>
+            <actions>
+                <action id="-13" name="Set boolean" sid="8518217150678088" type="Player">
+                    <param id="0" name="Instance variable">GameOver</param>
+                    <param id="1" name="Value">1</param>
+                </action>
+                <action behavior="CustomMovement" id="2" name="Set speed" sid="8534830483892008" type="Player">
+                    <param id="0" name="Which">0</param>
+                    <param id="1" name="Speed">50</param>
+                </action>
+                <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="2948268489662468" type="Player">
+                    <param id="0" name="Angle">player.Direction</param>
+                </action>
+                <action id="-9" name="Set value" sid="2300591597980362" type="System">
+                    <param id="0" name="Variable">Selected</param>
+                    <param id="1" name="Value">0</param>
+                </action>
+                <action id="2" name="Stop" sid="1906734291779708" type="Nibbles" />
+                <action id="5" name="Set frame" sid="5017964045987845" type="Nibbles">
+                    <param id="0" name="Frame number">Nibbles.Type</param>
+                </action>
+                <action id="-9" name="Set value" sid="5616011418800465" type="System">
+                    <param id="0" name="Variable">Mode</param>
+                    <param id="1" name="Value">&quot;Classic Help&quot;</param>
+                </action>
+            </actions>
+        </event-block>
+        <event-group description="" sid="8805914105638814" title="Main Loop">
+            <sub-events>
+                <event-block sid="8478154682526386">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="4656387184711909" type="System">
+                            <param id="0" name="Interval (seconds)">0.015</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="1855515855808819" type="Player">
+                            <param id="0" name="Angle">player.CustomMovement.MovingAngle - 0.5</param>
+                        </action>
+                        <action id="-16" name="Set opacity" sid="6985117640923048" type="Nibblets">
+                            <param id="0" name="Opacity">Nibblets.Opacity - 20</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="7694990439944329" type="Nibblets">
+                            <param id="0" name="Angle">Nibblets.Direction</param>
+                            <param id="1" name="Distance">int(random(4))</param>
+                        </action>
+                        <action id="-23" name="Move at angle" sid="8186812741143279" type="NibbleCloudParticles">
+                            <param id="0" name="Angle">int(random(360))</param>
+                            <param id="1" name="Distance">int(random(3))</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="2716095266324047">
+                            <conditions>
+                                <condition id="1" name="Is overlapping another object" sid="6153700194183995" type="Nibbles">
+                                    <param id="0" name="Object">NibblesIntro</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="6770452939628277" type="Nibbles">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <event-block sid="7737115476142854">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6484026339080471" type="Nibbles">
+                                            <param id="0" name="Instance variable">Counter</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Value">8</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="4717694815676631" type="Nibbles">
+                                            <param id="0" name="Object">Nibblets</param>
+                                            <param id="1" name="Layer">&quot;Fades&quot;</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="1958242413683686" type="Nibblets">
+                                            <param id="0" name="Angle">int(random(360))</param>
+                                            <param id="1" name="Distance">int(random(5))</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="4737489597622763" type="Nibblets">
+                                            <param id="0" name="Instance variable">Direction</param>
+                                            <param id="1" name="Value">int(random(360))</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="792647377511075" type="Nibbles">
+                                            <param id="0" name="Instance variable">Counter</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="317803825818371">
+                            <conditions>
+                                <condition id="1" inverted="1" name="Is overlapping another object" sid="1468752247413775" type="Nibbles">
+                                    <param id="0" name="Object">NibblesIntro</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-15" name="Set visible" sid="6846376827983394" type="Nibbles">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="6050189683966237">
+                            <conditions>
+                                <condition id="-10" name="Compare opacity" sid="664106956825615" type="Nibblets">
+                                    <param id="0" name="Comparison">3</param>
+                                    <param id="1" name="Opacity">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Destroy" sid="133912396837953" type="Nibblets" />
+                                <action id="-12" name="Subtract from" sid="8362606491869919" type="Nibbles">
+                                    <param id="0" name="Instance variable">Counter</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Cloud Nibbles</comment>
+                        <event-block sid="9349038125699298">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="6697845237024142" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="5004597099894112" type="Nibbles">
+                                    <param id="0" name="Object">NibbleCloudParticles</param>
+                                    <param id="1" name="Layer">&quot;Future Help&quot;</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Quake Nibbles</comment>
+                        <event-block sid="8620311960908719">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3267161694398144" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-3" name="Set position" sid="6023943479053054" type="Nibbles">
+                                    <param id="0" name="X">Nibbles.OriginalX + int(random(-3))</param>
+                                    <param id="1" name="Y">Nibbles.OriginalY + int(random(-3))</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-group description="" sid="5040850930206163" title="Classic/Future Opacity">
+                            <sub-events>
+                                <event-block sid="8684858587413431">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="568122689690673" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="2871491357533391" type="System">
+                                            <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-18" name="Set layer opacity" sid="9084981515520104" type="System">
+                                            <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                            <param id="1" name="Opacity">LayerOpacity(&quot;Classic Help&quot;) + 2</param>
+                                        </action>
+                                        <action id="-18" name="Set layer opacity" sid="4019604272977741" type="System">
+                                            <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                            <param id="1" name="Opacity">LayerOpacity(&quot;Future Help&quot;) - 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="5451448914431544">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="2139879775759759" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="1569774445555527" type="System">
+                                            <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                            <param id="1" name="Comparison">2</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-18" name="Set layer opacity" sid="4293038303757904" type="System">
+                                            <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                            <param id="1" name="Opacity">LayerOpacity(&quot;Classic Help&quot;) - 2</param>
+                                        </action>
+                                        <action id="-18" name="Set layer opacity" sid="7490274841685412" type="System">
+                                            <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                            <param id="1" name="Opacity">LayerOpacity(&quot;Future Help&quot;) + 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-block>
+                <event-block sid="6374215714694176">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="1676479381936698" type="System">
+                            <param id="0" name="Interval (seconds)">2</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-14" name="Toggle boolean" sid="1840860851411894" type="Player">
+                            <param id="0" name="Instance variable">GameOver</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="5584173146568504" title="Keyboard Events">
+            <sub-events>
+                <event-block sid="662061695498957">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="6034495415962688" type="Keyboard">
+                            <param id="0" name="Key">27 (Esc)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="9781498550779711" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="9529917453575398" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="8288875624949642" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Value">&quot;Entry&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="4888103257477688" type="System">
+                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="7702956751584285">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="604090373590802" type="Keyboard">
+                            <param id="0" name="Key">13 (Return)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="8325114550000005" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Back to menu</comment>
+                        <event-block sid="9583073242240104">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8464502283964036" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="8613675444932185" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="3343206616589862" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Entry&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="8128883848921373" type="System">
+                                    <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1247703332576929">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1735083287939255" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="4277707031614745" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Switch to Future Help</comment>
+                                <event-block sid="1295934440006773">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="9816571789640396" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="7957414211925508" type="System">
+                                            <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="1266731895047172" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Future Help&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Switch to Classic Help</comment>
+                                <event-block sid="5577721084492436">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="7093883217772709" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="2893235716704762" type="System">
+                                            <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="4795035017232475" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Classic Help&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="2848431423148937">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="8129415297580374" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="4908852207073942" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="3200271751303601" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Special consideration for Fact of changing Classic/Future menu item</comment>
+                        <event-block sid="5888323858637046">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3450052890941184" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5940089881136077" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="3088961169596809">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="5377404479003502" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="6263580022254984" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="5534773942189333" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="673774189075845">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5067974042179973" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="907268940018368" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3605812745469952" title="Mouse Events">
+            <sub-events>
+                <event-block sid="7940513921891965">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="697137829268066" type="Mouse">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="5214697421096242" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">TextMenu.ItemNumber</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="7411849985469405" type="TextMenu">
+                            <param id="0" name="Instance variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Handle menu right clicks</comment>
+                        <event-block sid="5361094286903971">
+                            <conditions>
+                                <condition id="0" name="On click" sid="7388677773039965" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                </condition>
+                                <condition id="7" name="Cursor is over object" sid="242163483574291" type="Mouse">
+                                    <param id="0" name="Object">TextMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="6516494832782405" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Back to menu</comment>
+                                <event-block sid="7172850783617381">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="2454854782626589" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Back to Menu (Esc)&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6550045973627489" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Entry&quot;</param>
+                                        </action>
+                                        <action id="-25" name="Go to layout (by name)" sid="198587391715728" type="System">
+                                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Switch to Future Help</comment>
+                                <event-block sid="4230102631801434">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1748895813300708" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="2652686904149205" type="System">
+                                            <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Play" sid="4538008632552902" type="Audio">
+                                            <param id="0" name="Audio file">nibbles</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="2567605880291726" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Future Help&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Switch to Classic Help</comment>
+                                <event-block sid="6403460496845464">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="563816056558174" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic Help&quot;</param>
+                                        </condition>
+                                        <condition id="-17" name="Compare opacity" sid="5689778691532831" type="System">
+                                            <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Opacity">100</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Play" sid="6568990400134978" type="Audio">
+                                            <param id="0" name="Audio file">nibbles</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8586736899982526" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Classic Help&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="9778074850819355" title="Touch Events">
+            <sub-events>
+                <event-block sid="215990954694817">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="8910720084500582" type="Touch">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="2564408539100082" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Back to menu</comment>
+                        <event-block sid="613955241708065">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="122624010767727" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Back to Menu (Esc)&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="1520248287111911" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Entry&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="3568648134503878" type="System">
+                                    <param id="0" name="Layout">&quot;Entry&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Switch to Future Help</comment>
+                        <event-block sid="9648540678233895">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="4136146282662452" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future Help&quot;</param>
+                                </condition>
+                                <condition id="-17" name="Compare opacity" sid="6317626235790875" type="System">
+                                    <param id="0" name="Layer">&quot;Classic Help&quot;</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Opacity">100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="4139572212489212" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="5296799025991127" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Future Help&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Switch to Classic Help</comment>
+                        <event-block sid="7732620162636012">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3328677866342159" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic Help&quot;</param>
+                                </condition>
+                                <condition id="-17" name="Compare opacity" sid="8322202239285876" type="System">
+                                    <param id="0" name="Layer">&quot;Future Help&quot;</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Opacity">100</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="2553433608377939" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="946729161667726" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Classic Help&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="2465772373668729" title="Handle Fades">
+            <sub-events>
+                <comment>Handle grid fades</comment>
+                <event-block sid="608394791334721">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="1856996120038479" type="Grid" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="183513831889974" type="Grid" />
+                    </actions>
+                </event-block>
+                <event-block sid="3019277891701826">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="61915523655169" type="GridAlternate" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="3067310872989596" type="GridAlternate" />
+                    </actions>
+                </event-block>
+                <event-block sid="4046273149247569">
+                    <conditions>
+                        <condition id="-3" name="On end of layout" sid="8978718161217045" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="9927790722147073" type="FadeIn">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="8859341187959135" type="FadeIn" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="538621528631363" title="Handle Help Menu">
+            <sub-events>
+                <comment>Handle highlighting of selected menu items</comment>
+                <event-block sid="1698863056425981">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="8691714395613721" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="5385935910427725" type="TextMenu">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="0" name="Set text" sid="5134139530100106" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.ValueHover</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="5563328186343949">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="2792052404970224" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="2995625085820046" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="7520351859910132" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="582267527825081">
+                    <conditions>
+                        <condition id="-7" inverted="1" name="Compare instance variable" sid="4231055011806276" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="8972553029709278" type="TextMenu">
+                            <param id="0" name="Opacity">50</param>
+                        </action>
+                        <action id="0" name="Set text" sid="9822487835541135" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="1467607008652133" type="TextMenu">
+                            <param id="0" name="Instance variable">SoundPlayed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

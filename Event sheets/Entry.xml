@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Entry</name>
+    <events>
+        <include>Hints</include>
+        <variable comment="Entry, Intro, Startup, Countdown, Game, Pause, Game Over, Classic Help, Future Help" constant="0" name="Mode" sid="9172485279904507" static="0" type="text">Intro</variable>
+        <variable comment="Classic or Future" constant="0" name="Type" sid="7374322085171243" static="0" type="text">Classic</variable>
+        <variable constant="0" name="Selected" sid="7117197049000999" static="0" type="number">0</variable>
+        <variable constant="0" name="VolumeFX" sid="4925312730146712" static="0" type="number">100</variable>
+        <variable constant="0" name="VolumeAmbiance" sid="1426162302805124" static="0" type="number">100</variable>
+        <variable comment="0 = Off, 1 = On" constant="0" name="TouchControls" sid="4215705495704667" static="0" type="number">0</variable>
+        <variable constant="0" name="OptionsScaleRate" sid="4618175442664359" static="0" type="number">0.0015</variable>
+        <variable constant="0" name="HighScoreClassic" sid="3735510232105007" static="0" type="number">0</variable>
+        <variable constant="0" name="HighScoreFuture" sid="7375059486376281" static="0" type="number">0</variable>
+        <event-group description="" sid="4934555813399384" title="Startup">
+            <sub-events>
+                <event-block sid="9626911798407422">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="3327758485861819" type="System" />
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="2" name="Set speed" sid="9254737251676585" type="Player">
+                            <param id="0" name="Which">0</param>
+                            <param id="1" name="Speed">50</param>
+                        </action>
+                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="8277489261178214" type="Player">
+                            <param id="0" name="Angle">270</param>
+                        </action>
+                        <action id="0" name="Play" sid="2971241638719452" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">1</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;drone&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="4343937639304081" type="TextInfo">
+                            <param id="0" name="Family name">&quot;Geo&quot;</param>
+                            <param id="1" name="CSS URL">&quot;http://fonts.googleapis.com/css?family=Geo&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="6793985079902573" type="TextIntro">
+                            <param id="0" name="Family name">&quot;Geo&quot;</param>
+                            <param id="1" name="CSS URL">&quot;http://fonts.googleapis.com/css?family=Geo&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="6467145595488288" type="TextMenu">
+                            <param id="0" name="Family name">&quot;Geo&quot;</param>
+                            <param id="1" name="CSS URL">&quot;http://fonts.googleapis.com/css?family=Geo&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="2988073265578032" type="TextHints">
+                            <param id="0" name="Family name">&quot;Geo&quot;</param>
+                            <param id="1" name="CSS URL">&quot;http://fonts.googleapis.com/css?family=Geo&quot;</param>
+                        </action>
+                        <action id="5" name="Set web font" sid="5105620288742148" type="TextScore">
+                            <param id="0" name="Family name">&quot;Geo&quot;</param>
+                            <param id="1" name="CSS URL">&quot;http://fonts.googleapis.com/css?family=Geo&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="1227289106110059">
+                            <conditions>
+                                <condition id="3" name="Local key exists" sid="482568811412239" type="WebStorage">
+                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Volume FX&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7805644803479293" type="System">
+                                    <param id="0" name="Variable">VolumeFX</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Volume FX&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8915272565374167">
+                            <conditions>
+                                <condition id="3" name="Local key exists" sid="927896012920293" type="WebStorage">
+                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Volume Ambiance&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5619738814720912" type="System">
+                                    <param id="0" name="Variable">VolumeAmbiance</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Volume Ambiance&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="1118734959579366">
+                            <conditions>
+                                <condition id="3" name="Local key exists" sid="6273521913846138" type="WebStorage">
+                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Touch Controls&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="6787408157194873" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Touch Controls&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="4253648713513485">
+                            <conditions>
+                                <condition id="3" name="Local key exists" sid="2950998944909196" type="WebStorage">
+                                    <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7109580392385548" type="System">
+                                    <param id="0" name="Variable">HighScoreClassic</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - High Score - Classic&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="7379790116679164">
+                            <conditions>
+                                <condition id="3" name="Local key exists" sid="5248371582805952" type="WebStorage">
+                                    <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="6081491340548686" type="System">
+                                    <param id="0" name="Variable">HighScoreFuture</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - High Score - Future&quot;)</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3855727949517435" title="Main Loop">
+            <sub-events>
+                <event-block sid="3287271584693269">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="3797834529078059" type="System">
+                            <param id="0" name="Interval (seconds)">0.015</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="8278858731383082" type="Player">
+                            <param id="0" name="Angle">player.CustomMovement.MovingAngle + 1</param>
+                        </action>
+                        <action id="-23" name="Set layer angle" sid="9190981770488251" type="System">
+                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                            <param id="1" name="Angle">player.CustomMovement.MovingAngle</param>
+                        </action>
+                        <action id="-23" name="Set layer angle" sid="4394762984443948" type="System">
+                            <param id="0" name="Layer">&quot;Parallax&quot;</param>
+                            <param id="1" name="Angle">player.CustomMovement.MovingAngle</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3848238818124832" title="Keyboard Events">
+            <sub-events>
+                <event-block sid="7113339181836855">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="3777128727562636" type="Keyboard">
+                            <param id="0" name="Key">40 (Down arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="1715962851489936" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-10" name="Add to" sid="4779388336893994" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="5366626708654608">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2858321541742254" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">TextMenu.Count - 1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="728503046968281" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">TextMenu.Count - 1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="1711169782294817">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="8686526384905518" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Set text" sid="5070756583235613" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-11" name="Subtract from" sid="8880348542823877" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="8015850316353938">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="9741792104183319" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">2</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="3325051958427997" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Value">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="1805408219564784">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="7642926509698993" type="Keyboard">
+                            <param id="0" name="Key">13 (Return)</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="2050533911235329" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="1933437285549006" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Classic</comment>
+                        <event-block sid="4877832526850051">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1758917743647951" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">0</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="5493578744655942" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Startup&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="4290952710140193" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Value">&quot;Classic&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="456641341213422" type="System">
+                                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Future</comment>
+                        <event-block sid="6234443292724061">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2279838540818881" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="6744229513863925" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Startup&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="8080748562687643" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Value">&quot;Future&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="3086377342725701" type="System">
+                                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Options</comment>
+                        <event-block sid="2364826241663325">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="3867674150320316" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-25" name="Go to layout (by name)" sid="4143238565576137" type="System">
+                                    <param id="0" name="Layout">&quot;Options&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Help</comment>
+                        <event-block sid="1646856091568724">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8155014876513375" type="System">
+                                    <param id="0" name="Variable">Selected</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-25" name="Go to layout (by name)" sid="364811136333601" type="System">
+                                    <param id="0" name="Layout">&quot;Help&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="1461681688835528" title="Handle Entry Menu">
+            <sub-events>
+                <comment>Handle highlighting of selected menu items</comment>
+                <event-block sid="6513668663007316">
+                    <conditions>
+                        <condition id="-7" name="Compare instance variable" sid="2702704140947339" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="9918680784932045" type="TextMenu">
+                            <param id="0" name="Opacity">100</param>
+                        </action>
+                        <action id="0" name="Set text" sid="9116995124608781" type="TextMenu">
+                            <param id="0" name="Text">&quot;-&gt; &quot; &amp; TextMenu.ValueHover &amp; &quot; &lt;-&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="7166499930906333">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="3664830183787945" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="3277924572463931" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="-13" name="Set boolean" sid="7776695905492119" type="TextMenu">
+                                    <param id="0" name="Instance variable">SoundPlayed</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="9845708102839067">
+                    <conditions>
+                        <condition id="-7" inverted="1" name="Compare instance variable" sid="9941021718102337" type="TextMenu">
+                            <param id="0" name="Instance variable">ItemNumber</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">Selected</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-16" name="Set opacity" sid="144252567007805" type="TextMenu">
+                            <param id="0" name="Opacity">50</param>
+                        </action>
+                        <action id="0" name="Set text" sid="3835013148503799" type="TextMenu">
+                            <param id="0" name="Text">TextMenu.Value</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="2350239080554152" type="TextMenu">
+                            <param id="0" name="Instance variable">SoundPlayed</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3932699888311898" title="Mouse Events">
+            <sub-events>
+                <event-block sid="2738784204631301">
+                    <conditions>
+                        <condition id="7" inverted="1" name="Cursor is over object" sid="9615420600777166" type="Mouse">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                </event-block>
+                <event-block sid="510820631036799">
+                    <conditions>
+                        <condition id="7" name="Cursor is over object" sid="2625878709614795" type="Mouse">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="231502142679428" type="System">
+                            <param id="0" name="Variable">Selected</param>
+                            <param id="1" name="Value">TextMenu.ItemNumber</param>
+                        </action>
+                        <action id="-13" name="Set boolean" sid="5372353048625121" type="TextMenu">
+                            <param id="0" name="Instance variable">Selected</param>
+                            <param id="1" name="Value">1</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Handle menu mouse clicks</comment>
+                        <event-block sid="7085204861296758">
+                            <conditions>
+                                <condition id="0" name="On click" sid="665581385745337" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                    <param id="1" name="Click type">0</param>
+                                </condition>
+                                <condition id="7" name="Cursor is over object" sid="9450290865511465" type="Mouse">
+                                    <param id="0" name="Object">TextMenu</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Play" sid="1473114388382717" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="5088500267456712" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Classic</comment>
+                                <event-block sid="8192175065684958">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="8997009470342214" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6738842540403696" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Startup&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="8542703845052138" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Value">&quot;Classic&quot;</param>
+                                        </action>
+                                        <action id="-25" name="Go to layout (by name)" sid="5009379959626757" type="System">
+                                            <param id="0" name="Layout">&quot;Game&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Future</comment>
+                                <event-block sid="546011086589748">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="5677649366472428" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="6631749747736393" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Startup&quot;</param>
+                                        </action>
+                                        <action id="-9" name="Set value" sid="5006501159582728" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Value">&quot;Future&quot;</param>
+                                        </action>
+                                        <action id="-25" name="Go to layout (by name)" sid="5591959652459042" type="System">
+                                            <param id="0" name="Layout">&quot;Game&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Options</comment>
+                                <event-block sid="5240171160778091">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="1622760607242908" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Options&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-25" name="Go to layout (by name)" sid="9217621874924635" type="System">
+                                            <param id="0" name="Layout">&quot;Options&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <comment>Help</comment>
+                                <event-block sid="7348038718956452">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6507427495002754" type="TextMenu">
+                                            <param id="0" name="Instance variable">Value</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Help&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-25" name="Go to layout (by name)" sid="6258232384992305" type="System">
+                                            <param id="0" name="Layout">&quot;Help&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3606062886000072" title="Touch Events">
+            <sub-events>
+                <event-block sid="1380596972623359">
+                    <conditions>
+                        <condition id="3" name="On touched object" sid="9596452257483017" type="Touch">
+                            <param id="0" name="Object">TextMenu</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="1909215989588383" type="Audio">
+                            <param id="0" name="Audio file">nibbles-bleep</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <comment>Classic</comment>
+                        <event-block sid="1346940684647182">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="4104432331524332" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="8977067559923837" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Startup&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="7338493382862308" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Value">&quot;Classic&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="5457544135773531" type="System">
+                                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Future</comment>
+                        <event-block sid="1821250948019048">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="3706513076874874" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="3349168744565447" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Startup&quot;</param>
+                                </action>
+                                <action id="-9" name="Set value" sid="3536216910729322" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Value">&quot;Future&quot;</param>
+                                </action>
+                                <action id="-25" name="Go to layout (by name)" sid="6820333051511881" type="System">
+                                    <param id="0" name="Layout">&quot;Game&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Options</comment>
+                        <event-block sid="2668609704617449">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9584461264881626" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Options&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-25" name="Go to layout (by name)" sid="4765291105755087" type="System">
+                                    <param id="0" name="Layout">&quot;Options&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Help</comment>
+                        <event-block sid="5595877891933232">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="662963072032101" type="TextMenu">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Help&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-25" name="Go to layout (by name)" sid="2878781413310274" type="System">
+                                    <param id="0" name="Layout">&quot;Help&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6907082283433515" title="Handle Fades">
+            <sub-events>
+                <comment>Handle grid fades</comment>
+                <event-block sid="1568156309050194">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="8823264725896437" type="Grid" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="3797438462772916" type="Grid" />
+                    </actions>
+                </event-block>
+                <event-block sid="9579371324808407">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="8333152812790285" type="GridAlternate" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="7309048209707759" type="GridAlternate" />
+                    </actions>
+                </event-block>
+                <event-block sid="6942957190192239">
+                    <conditions>
+                        <condition id="-3" name="On end of layout" sid="2583906342758573" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="273826143181642" type="FadeIn">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="3794581233530493" type="FadeIn" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="7251345635629833" title="Handle Hints">
+            <sub-events>
+                <event-block sid="9839634444553033">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="4683426558046637" type="System">
+                            <param id="0" name="Interval (seconds)">5</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-10" name="Set value" sid="4540364376885423" type="TextHints">
+                            <param id="0" name="Instance variable">Current</param>
+                            <param id="1" name="Value">int(random(Hints.Width))</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="875243025414496" type="TextHints" />
+                        <action id="0" name="Set text" sid="1075649648926371" type="TextHints">
+                            <param id="0" name="Text">Hints.At(TextHints.Current)</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>

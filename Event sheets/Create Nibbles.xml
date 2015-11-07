@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Create Nibbles</name>
+    <events>
+        <event-block sid="3003156707743099">
+            <conditions>
+                <condition id="-10" name="For" sid="4157926972510055" type="System">
+                    <param id="0" name="Name">&quot;Find Clear Location&quot;</param>
+                    <param id="1" name="Start index">1</param>
+                    <param id="2" name="End index">100</param>
+                </condition>
+            </conditions>
+            <actions>
+                <action id="-3" name="Create object" sid="5419769756777414" type="System">
+                    <param id="0" name="Object to create">NibbleLocation</param>
+                    <param id="1" name="Layer">&quot;Grid&quot;</param>
+                    <param id="2" name="X">random(int(LayoutWidth - 64)) + 32</param>
+                    <param id="3" name="Y">random(int(LayoutHeight - 64)) + 32</param>
+                </action>
+            </actions>
+            <sub-events>
+                <event-block sid="6708955445859653">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="3922111372183052" type="NibbleLocation">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="3607499757520029" type="NibbleLocation" />
+                    </actions>
+                </event-block>
+                <event-block sid="2501274959921586">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="2930624789528951" type="NibbleLocation">
+                            <param id="0" name="Object">Trail</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="2792336963564076" type="NibbleLocation" />
+                    </actions>
+                </event-block>
+                <event-block sid="7234868956657308">
+                    <conditions>
+                        <condition id="1" name="Is overlapping another object" sid="6278271577808213" type="NibbleLocation">
+                            <param id="0" name="Object">Nibbles</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="6932976258510824" type="NibbleLocation" />
+                    </actions>
+                </event-block>
+                <event-block sid="1095801766275622">
+                    <conditions>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="8908972197786419" type="NibbleLocation">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="9278149268442536" type="NibbleLocation">
+                            <param id="0" name="Object">Trail</param>
+                        </condition>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="3726268270181088" type="NibbleLocation">
+                            <param id="0" name="Object">Nibbles</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Spawn another object" sid="6049068952404028" type="NibbleLocation">
+                            <param id="0" name="Object">Nibbles</param>
+                            <param id="1" name="Layer">&quot;Grid&quot;</param>
+                            <param id="2" name="Image point">0</param>
+                        </action>
+                        <action id="2" name="Stop" sid="4875226588088657" type="Nibbles" />
+                        <action id="-24" name="Stop loop" sid="8252602010762653" type="System" />
+                    </actions>
+                    <sub-events>
+                        <comment>Randomize Nibble type in Future mode</comment>
+                        <event-block sid="7515679427708875">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7702871142056724" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="6151102494608905" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Value">int(random(5))</param>
+                                </action>
+                                <action id="5" name="Set frame" sid="8333970644178604" type="Nibbles">
+                                    <param id="0" name="Frame number">Nibbles.Type</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="4825750085539678" type="Nibbles">
+                                    <param id="0" name="Instance variable">OriginalX</param>
+                                    <param id="1" name="Value">Nibbles.X</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="6324450345249593" type="Nibbles">
+                                    <param id="0" name="Instance variable">OriginalY</param>
+                                    <param id="1" name="Value">Nibbles.Y</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Slow Nibbles</comment>
+                        <event-block sid="1887275843070759">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="5278232787681781" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="6333215827849739" type="Nibbles">
+                                    <param id="0" name="Speed">50</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Cloud Nibbles</comment>
+                        <event-block sid="1044073865025981">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="6012159059839463" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">2</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action behavior="Rotate" id="0" name="Set speed" sid="2951386667793022" type="Nibbles">
+                                    <param id="0" name="Speed">20</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Flash Nibbles</comment>
+                        <event-block sid="3656490683925027">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="228047143607535" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">3</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                        <comment>Quake Nibbles</comment>
+                        <event-block sid="7021839311130902">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="200608048641202" type="Nibbles">
+                                    <param id="0" name="Instance variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">4</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-block>
+    </events>
+</c2eventsheet>

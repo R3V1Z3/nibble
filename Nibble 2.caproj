@@ -1,0 +1,554 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2project>
+    <name>Nibble 2</name>
+    <description></description>
+    <version>1.0</version>
+    <author>DavidM</author>
+    <author-email></author-email>
+    <author-website></author-website>
+    <app-id></app-id>
+    <unique-id>1lfqgm2fwoucr</unique-id>
+    <saved-with-version>21600</saved-with-version>
+    <used-plugins>
+        <plugin author="Scirra" id="Arr" version="1">Array</plugin>
+        <plugin author="Scirra" id="Audio" version="1">Audio</plugin>
+        <plugin author="Scirra" id="Browser" version="1">Browser</plugin>
+        <plugin author="Scirra" id="Keyboard" version="1">Keyboard</plugin>
+        <plugin author="Scirra" id="Mouse" version="1">Mouse</plugin>
+        <plugin author="Scirra" id="Particles" version="1">Particles</plugin>
+        <plugin author="Scirra" id="Sprite" version="1">Sprite</plugin>
+        <plugin author="Scirra" id="Text" version="1">Text</plugin>
+        <plugin author="Scirra" id="TiledBg" version="1">Tiled Background</plugin>
+        <plugin author="Scirra" id="Touch" version="1">Touch</plugin>
+        <plugin author="Zack0Wack0/Scirra" id="WebStorage" version="1">WebStorage</plugin>
+    </used-plugins>
+    <used-behaviors>
+        <behavior author="Scirra" id="Fade" version="1">Fade</behavior>
+        <behavior author="Scirra" id="Flash" version="1">Flash</behavior>
+        <behavior author="Scirra" id="Rotate" version="1">Rotate</behavior>
+        <behavior author="Scirra" id="Sin" version="1">Sine</behavior>
+        <behavior author="Scirra" id="custom" version="1">Custom Movement</behavior>
+        <behavior author="Scirra" id="scrollto" version="1">Scroll To</behavior>
+        <behavior author="Scirra" id="wrap" version="1">Wrap</behavior>
+    </used-behaviors>
+    <used-effects />
+    <configurations>
+        <configuration exporter-descname="HTML5" exporter-id="html5" name="HTML 5" />
+    </configurations>
+    <window-size>
+        <width>500</width>
+        <height>500</height>
+    </window-size>
+    <pixel-rounding>0</pixel-rounding>
+    <preview-effects>1</preview-effects>
+    <first-layout>Entry</first-layout>
+    <use-loader-layout>0</use-loader-layout>
+    <configuration-settings>
+        <prop name="Clear background">Yes</prop>
+        <prop name="Enable WebGL">On</prop>
+        <prop name="Fullscreen in browser">Off</prop>
+        <prop name="Preview browser">(default)</prop>
+        <prop name="Preview mode">HTTP</prop>
+        <prop name="Sampling">Linear</prop>
+    </configuration-settings>
+    <object-folder>
+        <object-type name="Grid" sid="7680193121077508">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Fade" sid="8013841848730728">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Player" sid="2724295208920025">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Direction" sid="3673478781906031" type="number" />
+                <instance-variable name="GameOver" sid="3153465042668974" type="boolean" />
+                <instance-variable name="GameOverTimer" sid="7399721733893309" type="number" />
+                <instance-variable name="TrailLength" sid="806551275876285" type="number" />
+                <instance-variable name="TrailIncrement" sid="1538302456112227" type="number" />
+                <instance-variable name="DirectionThreshold" sid="2090508012531958" type="number" />
+                <instance-variable name="SpeedIncrement" sid="9878837451503577" type="number" />
+                <instance-variable name="SpeedMax" sid="7488892556743928" type="number" />
+                <instance-variable name="SpeedMin" sid="5049619987060609" type="number" />
+                <instance-variable name="SpeedStart" sid="7619860925155615" type="number" />
+                <instance-variable comment="Track player speed here to avoid issues with Classic mode" name="Speed" sid="304607963026521" type="number" />
+                <instance-variable comment="Counter for startup sequnce countdown" name="Countdown" sid="5612639247099059" type="number" />
+                <instance-variable name="Score" sid="152780437281122" type="number" />
+                <instance-variable name="ScoreIncrement" sid="1973242369857114" type="number" />
+                <instance-variable name="FXSlowNibble" sid="2210054048030095" type="number" />
+                <instance-variable name="FXCloudNibble" sid="2045141033857457" type="number" />
+                <instance-variable name="FXFlashNibble" sid="9975290305348499" type="number" />
+                <instance-variable comment="Stores decrement used for creating new random Nibbles" name="NibbleEveryXSeconds" sid="7256675539378745" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Wrap" sid="947941864375797">
+                    <behavior id="wrap" />
+                </behavior-type>
+                <behavior-type name="CustomMovement" sid="5633137743301841">
+                    <behavior id="custom" />
+                </behavior-type>
+                <behavior-type name="ScrollTo" sid="5588221281659054">
+                    <behavior id="scrollto" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="4787477525567201" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.125" y="0.125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.8125" y="0.1875" />
+                            <point x="1" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="1" />
+                            <point x="0.125" y="0.875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Mouse" sid="8231731118246088">
+            <plugin id="Mouse" />
+        </object-type>
+        <object-type name="Trail" sid="62721968302967">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable comment="Count to point of fade, based on player.TrailLength" name="Counter" sid="9285355706884186" type="number" />
+                <instance-variable comment="Lets us know when trail is being faded" name="Fade" sid="5172074227723259" type="boolean" />
+                <instance-variable comment="Used for safety cushion so player isn&apos;t killed by newly spawned trails" name="Safe" sid="262016922561595" type="boolean" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="3826253440748406" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.125" y="0.125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.8125" y="0.1875" />
+                            <point x="1" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="1" />
+                            <point x="0.125" y="0.875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Keyboard" sid="7752715783765139">
+            <plugin id="Keyboard" />
+        </object-type>
+        <object-type name="Nibbles" sid="7530242830525307">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable comment="0 = Normal, 1 = Slow, 2 = Cloud, 3 = Flash, 4 = Quake" name="Type" sid="9499304093300046" type="number" />
+                <instance-variable comment="For use with Shaky Nibbles" name="OriginalX" sid="4027348258833037" type="number" />
+                <instance-variable comment="For use with Shaky Nibbles" name="OriginalY" sid="3556389873895459" type="number" />
+                <instance-variable comment="After 10 seconds, Nibble will be destroyed and effect will occur" name="Counter" sid="2836313982239446" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Flash" sid="663933111224589">
+                    <behavior id="Flash" />
+                </behavior-type>
+                <behavior-type name="Rotate" sid="9128057151176006">
+                    <behavior id="Rotate" />
+                </behavior-type>
+                <behavior-type name="Sine" sid="1581875035802497">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="5" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1018523657184212" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.25" y="0.25" />
+                            <point x="0.5" y="0.125" />
+                            <point x="0.75" y="0.25" />
+                            <point x="0.875" y="0.5" />
+                            <point x="0.75" y="0.75" />
+                            <point x="0.5" y="0.875" />
+                            <point x="0.25" y="0.75" />
+                            <point x="0.125" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.25" y="0.25" />
+                            <point x="0.5" y="0.125" />
+                            <point x="0.75" y="0.25" />
+                            <point x="0.875" y="0.5" />
+                            <point x="0.75" y="0.75" />
+                            <point x="0.5" y="0.875" />
+                            <point x="0.25" y="0.75" />
+                            <point x="0.125" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.3125" y="0.3125" />
+                            <point x="0.5" y="0.0625" />
+                            <point x="0.6875" y="0.3125" />
+                            <point x="0.9375" y="0.5" />
+                            <point x="0.6875" y="0.6875" />
+                            <point x="0.5" y="0.9375" />
+                            <point x="0.3125" y="0.6875" />
+                            <point x="0.0625" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.1875" y="0.1875" />
+                            <point x="0.5" y="0.125" />
+                            <point x="0.8125" y="0.1875" />
+                            <point x="0.875" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="0.875" />
+                            <point x="0.1875" y="0.8125" />
+                            <point x="0.125" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.125" y="0.125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.5625" y="0.4375" />
+                            <point x="1" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="1" />
+                            <point x="0.125" y="0.875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Bounds" sid="5394824994897368">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9532236342065288" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextInfo" sid="8210666066357227">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Fade" sid="6403809549169588">
+                    <behavior id="Fade" />
+                </behavior-type>
+                <behavior-type name="Sine" sid="3977799253882888">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="MouseLeft" sid="9772199500022912">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5787859093733524" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="MouseRight" sid="5370136284941118">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6119302724578535" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="WebStorage" sid="2989503199449386">
+            <plugin id="WebStorage" />
+        </object-type>
+        <object-type name="GridParallax" sid="9999059940790633">
+            <plugin id="TiledBg" />
+            <texture />
+        </object-type>
+        <object-type name="Nibblets" sid="2128449287928847">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Direction" sid="7512939745506908" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Fade" sid="2846574808281008">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="5254262665751486" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.125" y="0.125" />
+                            <point x="0.5" y="0" />
+                            <point x="0.8125" y="0.1875" />
+                            <point x="1" y="0.5" />
+                            <point x="0.8125" y="0.8125" />
+                            <point x="0.5" y="1" />
+                            <point x="0.125" y="0.875" />
+                            <point x="0" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="GridAlternate" sid="4648154463021565">
+            <plugin id="TiledBg" />
+            <behaviors>
+                <behavior-type name="Fade" sid="6827029931606084">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="Audio" sid="4094011321761965">
+            <plugin id="Audio" />
+        </object-type>
+        <object-type name="NibblesIntro" sid="5696679056937055">
+            <plugin id="Particles" />
+            <behaviors>
+                <behavior-type name="Sine" sid="7678234689486571">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+            <texture />
+        </object-type>
+        <object-type name="TextIntro" sid="3460884156285065">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Sine" sid="1393317966909819">
+                    <behavior id="Sin" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="TextMenu" sid="4551920081499022">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="Value" sid="618534622029651" type="string" />
+                <instance-variable comment="To avoid repeating sounds" name="SoundPlayed" sid="2027249947138086" type="boolean" />
+                <instance-variable comment="Value of menu text when hovered" name="ValueHover" sid="8915627572041437" type="string" />
+                <instance-variable name="Selected" sid="3395309813969537" type="boolean" />
+                <instance-variable name="ItemNumber" sid="2773878360987763" type="number" />
+            </instance-variables>
+        </object-type>
+        <object-type name="TextScore" sid="1421932324185172">
+            <plugin id="Text" />
+            <behaviors>
+                <behavior-type name="Flash" sid="2546474070680029">
+                    <behavior id="Flash" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="NibbleLocation" sid="3521852450343738">
+            <plugin id="Sprite" />
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6953458985236062" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="TextHints" sid="6368008345831751">
+            <plugin id="Text" />
+            <instance-variables>
+                <instance-variable name="Current" sid="4888559801529147" type="number" />
+            </instance-variables>
+            <behaviors>
+                <behavior-type name="Fade" sid="3873912739439041">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+        </object-type>
+        <object-type name="Hints" sid="8553990133895633">
+            <plugin id="Arr" />
+        </object-type>
+        <object-type name="FadeIn" sid="3562437536717588">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="5795044782255575">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="9412791390564829" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="FadeOut" sid="3899795430239604">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="3091716594057614">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="1841348086428502" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="FadeFlash" sid="9463931607202616">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="6744992451514913">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2139799477520988" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="NibbleCloudParticles" sid="9248885630864736">
+            <plugin id="Sprite" />
+            <behaviors>
+                <behavior-type name="Fade" sid="612294450149198">
+                    <behavior id="Fade" />
+                </behavior-type>
+            </behaviors>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2164479455849064" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.3125" y="0.3125" />
+                            <point x="0.5" y="0.0625" />
+                            <point x="0.6875" y="0.3125" />
+                            <point x="0.9375" y="0.5" />
+                            <point x="0.6875" y="0.6875" />
+                            <point x="0.5" y="0.9375" />
+                            <point x="0.3125" y="0.6875" />
+                            <point x="0.0625" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Touch" sid="2963037117205661">
+            <plugin id="Touch" />
+        </object-type>
+        <object-type name="VolumeFX" sid="4344873876268759">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Value" sid="8443125425056501" type="number" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="6833368793838984" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="VolumeAmbiance" sid="2882039688436889">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Value" sid="1071105617078673" type="number" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="2922519155551775" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5" />
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="nibbletouchcontrol" sid="7093856469575261">
+            <plugin id="Sprite" />
+            <instance-variables>
+                <instance-variable name="Value" sid="1191230455786782" type="string" />
+            </instance-variables>
+            <animation-folder>
+                <animation framecount="1" loop="0" name="Default" pingpong="0" repeatcount="1" repeatto="0" sid="7990864912999292" speed="5">
+                    <frame duration="1" hotspotX="0.5" hotspotY="0.5">
+                        <collision-poly>
+                            <point x="0.5" y="0.015625" />
+                            <point x="0.953125" y="0.5" />
+                            <point x="1" y="1" />
+                            <point x="0" y="1" />
+                            <point x="0.046875" y="0.5" />
+                        </collision-poly>
+                    </frame>
+                </animation>
+            </animation-folder>
+        </object-type>
+        <object-type name="Browser" sid="237267321949725">
+            <plugin id="Browser" />
+        </object-type>
+    </object-folder>
+    <families />
+    <layout-folder>
+        <layout>Entry.xml</layout>
+        <layout>Game.xml</layout>
+        <layout>Options.xml</layout>
+        <layout>Help.xml</layout>
+    </layout-folder>
+    <event-folder>
+        <event-sheet>Game.xml</event-sheet>
+        <event-sheet>Entry.xml</event-sheet>
+        <event-sheet>Create Nibbles.xml</event-sheet>
+        <event-sheet>Hints.xml</event-sheet>
+        <event-sheet>Options.xml</event-sheet>
+        <event-sheet>Help.xml</event-sheet>
+    </event-folder>
+    <global-instances>
+        <global-instance type="Mouse" uid="100" />
+        <global-instance type="Keyboard" uid="101" />
+        <global-instance type="WebStorage" uid="102" />
+        <global-instance type="Audio" uid="103">
+            <properties>
+                <timescale-audio>Off</timescale-audio>
+                <saveload>All</saveload>
+                <play-in-background>No</play-in-background>
+                <positioned-audio></positioned-audio>
+                <panning-model>HRTF</panning-model>
+                <distance-model>Inverse</distance-model>
+                <listener-z-height>600</listener-z-height>
+                <reference-distance>600</reference-distance>
+                <maximum-distance>10000</maximum-distance>
+                <roll-off-factor>1</roll-off-factor>
+            </properties>
+        </global-instance>
+        <global-instance type="Touch" uid="104">
+            <properties>
+                <use-mouse-input>No</use-mouse-input>
+            </properties>
+        </global-instance>
+        <global-instance type="Browser" uid="105" />
+    </global-instances>
+    <sounds-folder>
+        <file name="nibbles-bleep.m4a" />
+        <file name="nibbles-bleep.ogg" />
+        <file name="nibbles-bleep.wav" />
+        <file name="nibbles.m4a" />
+        <file name="nibbles.ogg" />
+        <file name="nibbles.wav" />
+        <file name="nibbles-shock.m4a" />
+        <file name="nibbles-shock.ogg" />
+        <file name="nibbles-shock.wav" />
+        <file name="nibbles-ambience.m4a" />
+        <file name="nibbles-ambience.ogg" />
+        <file name="nibbles-ambience.wav" />
+        <file name="nibbles-electrical-drone.m4a" />
+        <file name="nibbles-electrical-drone.ogg" />
+        <file name="nibbles-electrical-drone.wav" />
+        <file name="nibbles-turn.m4a" />
+        <file name="nibbles-turn.ogg" />
+        <file name="nibbles-turn.wav" />
+        <file name="nibbles-shaky.m4a" />
+        <file name="nibbles-shaky.ogg" />
+        <file name="nibbles-shaky.wav" />
+        <file name="nibbles-slow.m4a" />
+        <file name="nibbles-slow.ogg" />
+        <file name="nibbles-slow.wav" />
+    </sounds-folder>
+    <music-folder />
+    <files-folder>
+        <file-folder name="Icons">
+            <file name="icon-16.png" />
+            <file name="icon-32.png" />
+            <file name="icon-114.png" />
+            <file name="icon-128.png" />
+            <file name="icon-256.png" />
+            <file name="loading-logo.png" />
+        </file-folder>
+    </files-folder>
+</c2project>

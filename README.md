@@ -1,2 +1,4 @@
-# nibble
-Nibble browser game built using Construct 2
+# Nibble2
+
+Nibble browser game built using Construct 2.
+

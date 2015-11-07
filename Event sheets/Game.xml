@@ -1,0 +1,2120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<c2eventsheet>
+    <!--All the 'name' attributes are ignored by Construct 2 - they are there for readability only.-->
+    <name>Game</name>
+    <events>
+        <event-group description="" sid="3878539358938518" title="Startup">
+            <sub-events>
+                <event-block sid="5715767117589123">
+                    <conditions>
+                        <condition id="-2" name="On start of layout" sid="9581105212883667" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Destroy" sid="2137607412094869" type="Trail" />
+                        <action id="-9" name="Destroy" sid="3060380999766497" type="Nibblets" />
+                        <action id="-9" name="Destroy" sid="7228496092580295" type="Nibbles" />
+                        <action id="-17" name="Set layer scale" sid="4550866957665246" type="System">
+                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                            <param id="1" name="Scale">200/player.Speed</param>
+                        </action>
+                        <action id="-10" name="Set value" sid="5644020906000312" type="Player">
+                            <param id="0" name="Instance variable">Direction</param>
+                            <param id="1" name="Value">270</param>
+                        </action>
+                        <action id="-23" name="Set layer angle" sid="8285876373604532" type="System">
+                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                            <param id="1" name="Angle">player.Direction + 90</param>
+                        </action>
+                        <action id="-23" name="Set layer angle" sid="3290587523755767" type="System">
+                            <param id="0" name="Layer">&quot;Parallax&quot;</param>
+                            <param id="1" name="Angle">player.Direction + 90</param>
+                        </action>
+                    </actions>
+                    <sub-events>
+                        <event-block sid="1094889485701101">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7665461503904076" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="9908987664338305" type="nibbletouchcontrol">
+                                    <param id="0" name="Opacity">30</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2946054052152094">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="9568627873418772" type="System">
+                                    <param id="0" name="Variable">TouchControls</param>
+                                    <param id="1" name="Comparison">1</param>
+                                    <param id="2" name="Value">1</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-16" name="Set opacity" sid="1795246155701027" type="nibbletouchcontrol">
+                                    <param id="0" name="Opacity">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6257052413215236" title="Main Loop">
+            <sub-events>
+                <event-block sid="2121999903257405">
+                    <conditions>
+                        <condition id="-6" name="Every X seconds" sid="5294552380588301" type="System">
+                            <param id="0" name="Interval (seconds)">0.015</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-group description="" sid="1601797197551011" title="Startup Mode">
+                            <sub-events>
+                                <comment>Begin Countdown sequence</comment>
+                                <event-block sid="5563688262807534">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="9603691219329994" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Startup&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-9" name="Set value" sid="7991971263608723" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Value">&quot;Countdown&quot;</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="8141129217052104" type="Audio">
+                                            <param id="0" name="Audio file">nibbles-ambience</param>
+                                            <param id="2" name="Loop">1</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;ambiance&quot;</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="4750517545512771" type="TextInfo">
+                                            <param id="0" name="Text">player.Countdown</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="9280956854964291" type="TextInfo">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action behavior="Fade" id="0" name="Restart fade" sid="6380198378762447" type="TextInfo" />
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="7199938834725205" title="Countdown Mode">
+                            <sub-events>
+                                <event-block sid="8448215993041496">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="8166172985868103" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Countdown&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set text" sid="1632291161219238" type="TextInfo">
+                                            <param id="0" name="Text">player.Countdown</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="2771497313009389" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed + 1</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="8951136090535133" type="Player">
+                                            <param id="0" name="Angle">player.Direction</param>
+                                        </action>
+                                        <action id="-10" name="Set value" sid="5092775830755749" type="Player">
+                                            <param id="0" name="Instance variable">Direction</param>
+                                            <param id="1" name="Value">270</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <comment>Decrement Countdown</comment>
+                                        <event-block sid="4364085930716826">
+                                            <conditions>
+                                                <condition id="-6" name="Every X seconds" sid="3466015373904895" type="System">
+                                                    <param id="0" name="Interval (seconds)">1.0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Play" sid="8031641286340358" type="Audio">
+                                                    <param id="0" name="Audio file">nibbles</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                </action>
+                                                <action id="-12" name="Subtract from" sid="7882678807359519" type="Player">
+                                                    <param id="0" name="Instance variable">Countdown</param>
+                                                    <param id="1" name="Value">1</param>
+                                                </action>
+                                                <action id="0" name="Set text" sid="8721088855550835" type="TextInfo">
+                                                    <param id="0" name="Text">player.Countdown</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Switch to Game mode if Countdown timer has reached 0</comment>
+                                        <event-block sid="6800973660207773">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="9728373664900303" type="Player">
+                                                    <param id="0" name="Instance variable">Countdown</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Set value" sid="3391773674090321" type="System">
+                                                    <param id="0" name="Variable">Mode</param>
+                                                    <param id="1" name="Value">&quot;Game&quot;</param>
+                                                </action>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="7381460415520192" type="Player">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="Speed">player.SpeedStart</param>
+                                                </action>
+                                                <action id="-17" name="Set layer scale" sid="7259164566465951" type="System">
+                                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                                    <param id="1" name="Scale">200/player.Speed</param>
+                                                </action>
+                                                <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="6476758207906827" type="Player">
+                                                    <param id="0" name="Angle">player.Direction</param>
+                                                </action>
+                                                <action id="-15" name="Set visible" sid="3647020954652596" type="TextInfo">
+                                                    <param id="0" name="Visibility">0</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="3159775265161219" type="Audio">
+                                                    <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                                                    <param id="2" name="Loop">1</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;drone&quot;</param>
+                                                </action>
+                                                <action id="-15" name="Set visible" sid="4642244125479813" type="Player">
+                                                    <param id="0" name="Visibility">1</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <include>Create Nibbles</include>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="1221318179958382" title="Game Over Mode">
+                            <sub-events>
+                                <event-block sid="9371729643051587">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="4493479838443746" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="ScrollTo" id="0" name="Shake" sid="1264505198266464" type="Player">
+                                            <param id="0" name="Magnitude">20</param>
+                                            <param id="1" name="Duration">0.4</param>
+                                            <param id="2" name="Mode">0</param>
+                                        </action>
+                                        <action id="-11" name="Add to" sid="2969385273788269" type="Player">
+                                            <param id="0" name="Instance variable">GameOverTimer</param>
+                                            <param id="1" name="Value">1</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="263437230208227" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">0</param>
+                                        </action>
+                                        <action id="-16" name="Set opacity" sid="644282418219901" type="Trail">
+                                            <param id="0" name="Opacity">trail.Opacity - 0.5</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="9553344975638747" type="Trail">
+                                            <param id="0" name="Angle">int(random(360))</param>
+                                            <param id="1" name="Distance">int(random(5)) + 5</param>
+                                        </action>
+                                        <action id="-7" name="Set size" sid="7083406135679301" type="Trail">
+                                            <param id="0" name="Width">trail.Width - 1</param>
+                                            <param id="1" name="Height">trail.Height- 1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="1159973303350773" type="TextInfo">
+                                            <param id="0" name="Visibility">1</param>
+                                        </action>
+                                        <action id="-15" name="Set visible" sid="4040589892551125" type="Player">
+                                            <param id="0" name="Visibility">0</param>
+                                        </action>
+                                        <action id="0" name="Set text" sid="2423878359006142" type="TextInfo">
+                                            <param id="0" name="Text">&quot;Game Over&quot;</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="2534517106710392">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="3222715520956433" type="System">
+                                                    <param id="0" name="Variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="152611755459761">
+                                                    <conditions>
+                                                        <condition id="-7" name="Compare instance variable" sid="7255679590230729" type="Player">
+                                                            <param id="0" name="Instance variable">Score</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Value">HighScoreClassic</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Set text" sid="2309353732541731" type="TextInfo">
+                                                            <param id="0" name="Text">&quot;High Score!&quot;</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="3680421495076195">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="3681422501581539" type="System">
+                                                    <param id="0" name="Variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <event-block sid="7182722331307748">
+                                                    <conditions>
+                                                        <condition id="-7" name="Compare instance variable" sid="3387930885115839" type="Player">
+                                                            <param id="0" name="Instance variable">Score</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Value">HighScoreFuture</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="0" name="Set text" sid="7633242354046404" type="TextInfo">
+                                                            <param id="0" name="Text">&quot;High Score!&quot;</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="2613222804906665">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="5391794861781948" type="Player">
+                                                    <param id="0" name="Instance variable">GameOverTimer</param>
+                                                    <param id="1" name="Comparison">5</param>
+                                                    <param id="2" name="Value">100</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="ScrollTo" id="0" name="Shake" sid="1240474461554601" type="Player">
+                                                    <param id="0" name="Magnitude">20</param>
+                                                    <param id="1" name="Duration">0.4</param>
+                                                    <param id="2" name="Mode">0</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                        <event-group description="" sid="8122800116659463" title="Game Mode">
+                            <sub-events>
+                                <event-block sid="8970641462184221">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="964474613552973" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Game&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-23" name="Set layer angle" sid="1185330975536945" type="System">
+                                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                            <param id="1" name="Angle">player.Direction + 90</param>
+                                        </action>
+                                        <action id="-23" name="Set layer angle" sid="1408159427519539" type="System">
+                                            <param id="0" name="Layer">&quot;Parallax&quot;</param>
+                                            <param id="1" name="Angle">player.Direction + 90</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="6" name="Set angle of motion" sid="7758695659184821" type="Player">
+                                            <param id="0" name="Angle">player.Direction</param>
+                                        </action>
+                                        <action id="-23" name="Move at angle" sid="5613022098479168" type="Nibblets">
+                                            <param id="0" name="Angle">nibblets.Direction</param>
+                                            <param id="1" name="Distance">int(random(3)) + 3</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <comment>In Future mode, automatically create new Nibbles every so often</comment>
+                                        <event-block sid="8826970796949437">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="8874749588909681" type="System">
+                                                    <param id="0" name="Variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                                </condition>
+                                                <condition id="-6" name="Every X seconds" sid="8990764660063567" type="System">
+                                                    <param id="0" name="Interval (seconds)">player.NibbleEveryXSeconds</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions />
+                                            <sub-events>
+                                                <include>Create Nibbles</include>
+                                            </sub-events>
+                                        </event-block>
+                                        <comment>Use Counters in trails to designate when they should begin fading</comment>
+                                        <event-block sid="1661839546070884">
+                                            <conditions>
+                                                <condition id="-6" name="Every X seconds" sid="2549111679028301" type="System">
+                                                    <param id="0" name="Interval (seconds)">0.1</param>
+                                                </condition>
+                                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="6702395432756093" type="Trail">
+                                                    <param id="0" name="Instance variable">Fade</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Add to" sid="2553890504635111" type="Trail">
+                                                    <param id="0" name="Instance variable">Counter</param>
+                                                    <param id="1" name="Value">0.5</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="3024745813082748">
+                                                    <conditions>
+                                                        <condition id="-7" name="Compare instance variable" sid="3023041195964827" type="Trail">
+                                                            <param id="0" name="Instance variable">Counter</param>
+                                                            <param id="1" name="Comparison">5</param>
+                                                            <param id="2" name="Value">player.TrailLength</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-13" name="Set boolean" sid="4459777872549605" type="Trail">
+                                                            <param id="0" name="Instance variable">Fade</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <comment>Handle fading of trail</comment>
+                                        <event-block sid="7959327710273014">
+                                            <conditions>
+                                                <condition id="-8" name="Is boolean instance variable set" sid="9264056265199966" type="Trail">
+                                                    <param id="0" name="Instance variable">Fade</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-16" name="Set opacity" sid="9700836829621459" type="Trail">
+                                                    <param id="0" name="Opacity">trail.Opacity - 3</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <event-block sid="500614702926288">
+                                                    <conditions>
+                                                        <condition id="-7" name="Compare instance variable" sid="489558828497879" type="Player">
+                                                            <param id="0" name="Instance variable">FXCloudNibble</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-23" name="Move at angle" sid="981768724976725" type="Trail">
+                                                            <param id="0" name="Angle">int(random(360))</param>
+                                                            <param id="1" name="Distance">3</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                        <event-block sid="982260813560727">
+                                            <conditions>
+                                                <condition id="-10" name="Compare opacity" sid="8843780129531273" type="Trail">
+                                                    <param id="0" name="Comparison">3</param>
+                                                    <param id="1" name="Opacity">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-9" name="Destroy" sid="1622591739872299" type="Trail" />
+                                            </actions>
+                                        </event-block>
+                                        <comment>Return to normal speed after effect from Slow Nibbles</comment>
+                                        <event-block sid="5144418758112981">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="8761859208954814" type="Player">
+                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                    <param id="1" name="Comparison">3</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                                <condition id="-14" name="Compare variable" sid="1694079692765319" type="System">
+                                                    <param id="0" name="Variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="3538632956434785" type="Player">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="Speed">player.Speed</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Handle special Cloud Nibble considerations</comment>
+                                        <event-block sid="7038567689391471">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="1729711437243356" type="Nibbles">
+                                                    <param id="0" name="Instance variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">2</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="0" name="Spawn another object" sid="2913489188076994" type="Nibbles">
+                                                    <param id="0" name="Object">NibbleCloudParticles</param>
+                                                    <param id="1" name="Layer">0</param>
+                                                    <param id="2" name="Image point">0</param>
+                                                </action>
+                                                <action id="-8" name="Set angle" sid="133629722673164" type="NibbleCloudParticles">
+                                                    <param id="0" name="Angle">int(random(360))</param>
+                                                </action>
+                                                <action id="-23" name="Move at angle" sid="144986759729129" type="NibbleCloudParticles">
+                                                    <param id="0" name="Angle">int(random(360))</param>
+                                                    <param id="1" name="Distance">int(random(10))</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <comment>Handle special Quake Nibble movements</comment>
+                                        <event-block sid="8465406051727059">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="4086537759777086" type="Nibbles">
+                                                    <param id="0" name="Instance variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">4</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-3" name="Set position" sid="9189222839939303" type="Nibbles">
+                                                    <param id="0" name="X">Nibbles.OriginalX + int(random(-8))</param>
+                                                    <param id="1" name="Y">Nibbles.OriginalY + int(random(-8))</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-group description="" sid="2794720312204912" title="Nibble checks">
+                                            <sub-events>
+                                                <event-block sid="4453438918649592">
+                                                    <conditions>
+                                                        <condition id="-6" name="Every X seconds" sid="8920039269019838" type="System">
+                                                            <param id="0" name="Interval (seconds)">1.0</param>
+                                                        </condition>
+                                                        <condition id="-14" name="Compare variable" sid="6781042235216563" type="System">
+                                                            <param id="0" name="Variable">Type</param>
+                                                            <param id="1" name="Comparison">0</param>
+                                                            <param id="2" name="Value">&quot;Future&quot;</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action id="-11" name="Add to" sid="5416335863799978" type="Nibbles">
+                                                            <param id="0" name="Instance variable">Counter</param>
+                                                            <param id="1" name="Value">1</param>
+                                                        </action>
+                                                        <action behavior="Sine" id="2" name="Set magnitude" sid="7827411500324606" type="Nibbles">
+                                                            <param id="0" name="Magnitude">Nibbles.Counter</param>
+                                                        </action>
+                                                    </actions>
+                                                    <sub-events>
+                                                        <comment>Slow effect counter</comment>
+                                                        <event-block sid="4163787847408999">
+                                                            <conditions>
+                                                                <condition id="-7" name="Compare instance variable" sid="139088106957571" type="Player">
+                                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                                    <param id="1" name="Comparison">4</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-12" name="Subtract from" sid="4061962994381363" type="Player">
+                                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                                    <param id="1" name="Value">1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <comment>Cloudy effect counter</comment>
+                                                        <event-block sid="723694633897714">
+                                                            <conditions>
+                                                                <condition id="-7" name="Compare instance variable" sid="9490286543708991" type="Player">
+                                                                    <param id="0" name="Instance variable">FXCloudNibble</param>
+                                                                    <param id="1" name="Comparison">4</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-12" name="Subtract from" sid="5298897599229555" type="Player">
+                                                                    <param id="0" name="Instance variable">FXCloudNibble</param>
+                                                                    <param id="1" name="Value">1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <comment>Flash Nibble effect counter</comment>
+                                                        <event-block sid="6481286552396986">
+                                                            <conditions>
+                                                                <condition id="-7" name="Compare instance variable" sid="7147731705986103" type="Player">
+                                                                    <param id="0" name="Instance variable">FXFlashNibble</param>
+                                                                    <param id="1" name="Comparison">4</param>
+                                                                    <param id="2" name="Value">0</param>
+                                                                </condition>
+                                                            </conditions>
+                                                            <actions>
+                                                                <action id="-12" name="Subtract from" sid="6465913320095475" type="Player">
+                                                                    <param id="0" name="Instance variable">FXFlashNibble</param>
+                                                                    <param id="1" name="Value">1</param>
+                                                                </action>
+                                                            </actions>
+                                                        </event-block>
+                                                        <event-group description="" sid="6653323083681461" title="Nibbles destruction events">
+                                                            <sub-events>
+                                                                <event-block sid="9453113967290224">
+                                                                    <conditions>
+                                                                        <condition id="-7" name="Compare instance variable" sid="8218343066206003" type="Nibbles">
+                                                                            <param id="0" name="Instance variable">Counter</param>
+                                                                            <param id="1" name="Comparison">5</param>
+                                                                            <param id="2" name="Value">10</param>
+                                                                        </condition>
+                                                                    </conditions>
+                                                                    <actions>
+                                                                        <action id="-11" name="Add to" sid="2573857623654336" type="Player">
+                                                                            <param id="0" name="Instance variable">TrailLength</param>
+                                                                            <param id="1" name="Value">player.TrailIncrement</param>
+                                                                        </action>
+                                                                    </actions>
+                                                                    <sub-events>
+                                                                        <comment>Add a cool effect using Nibblets</comment>
+                                                                        <event-block sid="1935841668746673">
+                                                                            <conditions>
+                                                                                <condition id="-10" name="For" sid="5157556646541589" type="System">
+                                                                                    <param id="0" name="Name">&quot;Random Nibblets&quot;</param>
+                                                                                    <param id="1" name="Start index">1</param>
+                                                                                    <param id="2" name="End index">10</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Spawn another object" sid="9742357706120577" type="Nibbles">
+                                                                                    <param id="0" name="Object">Nibblets</param>
+                                                                                    <param id="1" name="Layer">0</param>
+                                                                                    <param id="2" name="Image point">0</param>
+                                                                                </action>
+                                                                                <action id="-10" name="Set value" sid="760695856059865" type="Nibblets">
+                                                                                    <param id="0" name="Instance variable">Direction</param>
+                                                                                    <param id="1" name="Value">int(random(360))</param>
+                                                                                </action>
+                                                                                <action id="-9" name="Destroy" sid="5973915535813613" type="Nibbles" />
+                                                                            </actions>
+                                                                        </event-block>
+                                                                        <include>Create Nibbles</include>
+                                                                        <comment>Normal Nibbles</comment>
+                                                                        <event-block sid="846449413031586">
+                                                                            <conditions>
+                                                                                <condition id="-7" name="Compare instance variable" sid="9458986722330884" type="Nibbles">
+                                                                                    <param id="0" name="Instance variable">Type</param>
+                                                                                    <param id="1" name="Comparison">0</param>
+                                                                                    <param id="2" name="Value">0</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Play" sid="2581480603978895" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-shaky</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action id="0" name="Play" sid="5006629642674249" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                            </actions>
+                                                                        </event-block>
+                                                                        <comment>Slow Nibbles</comment>
+                                                                        <event-block sid="2256187440809004">
+                                                                            <conditions>
+                                                                                <condition id="-7" name="Compare instance variable" sid="1273669291338073" type="Nibbles">
+                                                                                    <param id="0" name="Instance variable">Type</param>
+                                                                                    <param id="1" name="Comparison">0</param>
+                                                                                    <param id="2" name="Value">1</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Play" sid="1039468905233958" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-shaky</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action id="0" name="Play" sid="317683484810626" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-slow</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action id="-10" name="Set value" sid="5142238755581836" type="Player">
+                                                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                                                    <param id="1" name="Value">10</param>
+                                                                                </action>
+                                                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="4387977645115484" type="Player">
+                                                                                    <param id="0" name="Which">0</param>
+                                                                                    <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                                                                </action>
+                                                                            </actions>
+                                                                        </event-block>
+                                                                        <comment>Cloud Nibbles - handled in trail rendering, makes trail cloudy and easy to hit</comment>
+                                                                        <event-block sid="6072120622291786">
+                                                                            <conditions>
+                                                                                <condition id="-7" name="Compare instance variable" sid="5881994470783432" type="Nibbles">
+                                                                                    <param id="0" name="Instance variable">Type</param>
+                                                                                    <param id="1" name="Comparison">0</param>
+                                                                                    <param id="2" name="Value">2</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Play" sid="2733005485340813" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-shaky</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action id="-10" name="Set value" sid="7445486706881362" type="Player">
+                                                                                    <param id="0" name="Instance variable">FXCloudNibble</param>
+                                                                                    <param id="1" name="Value">10</param>
+                                                                                </action>
+                                                                            </actions>
+                                                                        </event-block>
+                                                                        <comment>Flash Nibbles - fades in the FadeFlash, blinding player</comment>
+                                                                        <event-block sid="1123032660662461">
+                                                                            <conditions>
+                                                                                <condition id="-7" name="Compare instance variable" sid="4505790580201237" type="Nibbles">
+                                                                                    <param id="0" name="Instance variable">Type</param>
+                                                                                    <param id="1" name="Comparison">0</param>
+                                                                                    <param id="2" name="Value">3</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Play" sid="5300307858825411" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-shaky</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action id="-10" name="Set value" sid="1655552916468126" type="Player">
+                                                                                    <param id="0" name="Instance variable">FXFlashNibble</param>
+                                                                                    <param id="1" name="Value">1</param>
+                                                                                </action>
+                                                                                <action id="-15" name="Set visible" sid="6913374974226536" type="FadeFlash">
+                                                                                    <param id="0" name="Visibility">1</param>
+                                                                                </action>
+                                                                                <action behavior="Fade" id="0" name="Restart fade" sid="4808010203065414" type="FadeFlash" />
+                                                                            </actions>
+                                                                        </event-block>
+                                                                        <comment>Quake Nibbles</comment>
+                                                                        <event-block sid="110229816734259">
+                                                                            <conditions>
+                                                                                <condition id="-7" name="Compare instance variable" sid="7462999782687263" type="Nibbles">
+                                                                                    <param id="0" name="Instance variable">Type</param>
+                                                                                    <param id="1" name="Comparison">0</param>
+                                                                                    <param id="2" name="Value">4</param>
+                                                                                </condition>
+                                                                            </conditions>
+                                                                            <actions>
+                                                                                <action id="0" name="Play" sid="6330567036578316" type="Audio">
+                                                                                    <param id="0" name="Audio file">nibbles-shaky</param>
+                                                                                    <param id="2" name="Loop">0</param>
+                                                                                    <param id="3" name="Volume">0</param>
+                                                                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                                                                </action>
+                                                                                <action behavior="ScrollTo" id="0" name="Shake" sid="820300161310741" type="Player">
+                                                                                    <param id="0" name="Magnitude">20</param>
+                                                                                    <param id="1" name="Duration">5</param>
+                                                                                    <param id="2" name="Mode">0</param>
+                                                                                </action>
+                                                                            </actions>
+                                                                        </event-block>
+                                                                    </sub-events>
+                                                                </event-block>
+                                                            </sub-events>
+                                                        </event-group>
+                                                    </sub-events>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-group>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Handle scale/zoom constraints</comment>
+                                <event-block sid="1531162389242063">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="110544413626514" type="System">
+                                            <param id="0" name="First value">player.Speed</param>
+                                            <param id="1" name="Comparison">5</param>
+                                            <param id="2" name="Second value">player.SpeedMax</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="1049316315576275" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.SpeedMax</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9941695542386344">
+                                    <conditions>
+                                        <condition id="-8" name="Compare two values" sid="3727387771136795" type="System">
+                                            <param id="0" name="First value">player.Speed</param>
+                                            <param id="1" name="Comparison">3</param>
+                                            <param id="2" name="Second value">player.SpeedMin</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="6498702222534125" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.SpeedMin</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <event-block sid="8056210090321648">
+                                            <conditions>
+                                                <condition id="-14" name="Compare variable" sid="3368970301569087" type="System">
+                                                    <param id="0" name="Variable">Type</param>
+                                                    <param id="1" name="Comparison">0</param>
+                                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="5886929677797174" type="Player">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="Speed">player.Speed</param>
+                                                </action>
+                                            </actions>
+                                            <sub-events>
+                                                <comment>Handle Slow effect</comment>
+                                                <event-block sid="125906714170951">
+                                                    <conditions>
+                                                        <condition id="-7" name="Compare instance variable" sid="7493796957510651" type="Player">
+                                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                            <param id="1" name="Comparison">4</param>
+                                                            <param id="2" name="Value">0</param>
+                                                        </condition>
+                                                    </conditions>
+                                                    <actions>
+                                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5050551857561388" type="Player">
+                                                            <param id="0" name="Which">0</param>
+                                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                                        </action>
+                                                    </actions>
+                                                </event-block>
+                                            </sub-events>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                                <comment>Spawn trails only when in Game mode</comment>
+                                <event-block sid="9822252592196529">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="4184951405346037" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Game&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Spawn another object" sid="3284334362086767" type="Player">
+                                            <param id="0" name="Object">Trail</param>
+                                            <param id="1" name="Layer">0</param>
+                                            <param id="2" name="Image point">0</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-group>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="7780177758834176" title="Keyboard Events">
+            <sub-events>
+                <comment>ESCAPE key to pause</comment>
+                <event-block sid="5973307508315874">
+                    <conditions>
+                        <condition id="0" name="On key pressed" sid="8573954079223452" type="Keyboard">
+                            <param id="0" name="Key">27 (Esc)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="1753824723266215">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4937772298290062" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Game&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="3077028341757806" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Pause&quot;</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="8338271279897994" type="TextInfo">
+                                    <param id="0" name="Visibility">1</param>
+                                </action>
+                                <action id="0" name="Set text" sid="5961809671804957" type="TextInfo">
+                                    <param id="0" name="Text">&quot;Paused&quot;</param>
+                                </action>
+                                <action behavior="Fade" id="0" name="Restart fade" sid="7536629553295015" type="TextInfo" />
+                                <action id="-13" name="Set time scale" sid="5183468250642908" type="System">
+                                    <param id="0" name="Time scale">0</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8533070103822421">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5621867691978852" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Pause&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="7904868851762359" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Game&quot;</param>
+                                </action>
+                                <action id="-15" name="Set visible" sid="767024977211699" type="TextInfo">
+                                    <param id="0" name="Visibility">0</param>
+                                </action>
+                                <action id="-13" name="Set time scale" sid="6167228743995487" type="System">
+                                    <param id="0" name="Time scale">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>LEFT</comment>
+                <event-block sid="7976413367409793">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="123974130116258" type="Keyboard">
+                            <param id="0" name="Key">37 (Left arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Game mode</comment>
+                        <event-block sid="4381087649701237">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="1110249532726937" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Game&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="8560189159207656" type="Player">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                </action>
+                                <action id="0" name="Play" sid="4874829734156704" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>RIGHT</comment>
+                <event-block sid="7659973122141761">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="7907783543298362" type="Keyboard">
+                            <param id="0" name="Key">39 (Right arrow)</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Game mode</comment>
+                        <event-block sid="7958081673500032">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="9310514585717547" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Game&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="5779690233565054" type="Player">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                </action>
+                                <action id="0" name="Play" sid="6663255452023502" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>UP - Zoom in and speed up</comment>
+                <event-block sid="5817967659610264">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="1746188723572248" type="Keyboard">
+                            <param id="0" name="Key">38 (Up arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="7296262879972148" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Classic type</comment>
+                        <event-block sid="4378144136353105">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6455447253863855" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="8475389969947847" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="8791647560255694" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="2520734156817793" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Future type</comment>
+                        <event-block sid="3821497569660481">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5786863920786997" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="9164971131776963" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="2199967089890008" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="3664198271071297" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="6010020975759217" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="8789911732701679">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="9039994417809565" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="7474787378897427" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>DOWN - Zoom out and speed down</comment>
+                <event-block sid="8534609506382878">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="1834373802649594" type="Keyboard">
+                            <param id="0" name="Key">40 (Down arrow)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="7313817265634331" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Classic Mode</comment>
+                        <event-block sid="6386866523016242">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="4885345918772098" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="4328693235346533" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="8396260437218638" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="9652485418104424" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Future Mode</comment>
+                        <event-block sid="3234970765509515">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="5407572664251737" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="7342980763924932" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="5802513101564649" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="9521608460984808" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="1827313794078351" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="6697255824042765">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="9901056004168218" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="4600248725838253" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>SPACE - Slows speed down to minimum</comment>
+                <event-block sid="5989970765687441">
+                    <conditions>
+                        <condition id="2" name="Key is down" sid="2449065209027616" type="Keyboard">
+                            <param id="0" name="Key">32 (Space)</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="8753092468889502" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Future Mode</comment>
+                        <event-block sid="4556580991917372">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="2913518910620296" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="3644719713136973" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.SpeedMin</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="5273933009174185" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="9142650148011116" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="3835281455071217" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="4954835773773559">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="6130166079318013" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="5039889945255357" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Keyboard clicks after Game Over lead to Fade mode</comment>
+                <event-block sid="837043172331773">
+                    <conditions>
+                        <condition id="1" name="On any key pressed" sid="5285646250449358" type="Keyboard" />
+                        <condition id="-14" name="Compare variable" sid="878999342203376" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="1983144971500917" type="Player">
+                            <param id="0" name="Instance variable">GameOverTimer</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="4537653582504219" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="9084749479145822" type="Audio">
+                            <param id="0" name="Tag">&quot;ambiance&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="594953419390282" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Value">&quot;Entry&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="2965788138230263" type="System">
+                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3224545811314908" title="Mouse Events">
+            <sub-events>
+                <event-group description="" sid="4208875775030552" title="Mouse Left and Right turns">
+                    <sub-events>
+                        <event-block sid="4241905687318189">
+                            <conditions>
+                                <condition id="2" name="Mouse button is down" sid="5778823564180756" type="Mouse">
+                                    <param id="0" name="Mouse button">0</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <comment>For Game mode</comment>
+                                <event-block sid="4010572241644645">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="5363492619962487" type="System">
+                                            <param id="0" name="Variable">Mode</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Game&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions />
+                                    <sub-events>
+                                        <event-block sid="8263660321580388">
+                                            <conditions>
+                                                <condition id="7" name="Cursor is over object" sid="6019321496316428" type="Mouse">
+                                                    <param id="0" name="Object">MouseLeft</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-12" name="Subtract from" sid="4220233206036771" type="Player">
+                                                    <param id="0" name="Instance variable">Direction</param>
+                                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="8573403379398333" type="Audio">
+                                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                        <event-block sid="6189193361846836">
+                                            <conditions>
+                                                <condition id="7" name="Cursor is over object" sid="8941513663596375" type="Mouse">
+                                                    <param id="0" name="Object">MouseRight</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action id="-11" name="Add to" sid="1830869491361731" type="Player">
+                                                    <param id="0" name="Instance variable">Direction</param>
+                                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                                </action>
+                                                <action id="0" name="Play" sid="9587432013746873" type="Audio">
+                                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                                    <param id="2" name="Loop">0</param>
+                                                    <param id="3" name="Volume">0</param>
+                                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-group>
+                <event-block sid="7457907035181585">
+                    <conditions />
+                    <actions />
+                </event-block>
+                <event-block sid="971878140686275">
+                    <conditions>
+                        <condition id="8" name="On mouse wheel" sid="9097033071258717" type="Mouse">
+                            <param id="0" name="Direction">1</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="5535275691148422" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="2977708563136292">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6667744086824898" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="3456618643456938" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="3953124988116129" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="9739854216565189" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="8964187890794969">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="7510020592528966" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="884265999254018" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="3130705059613055" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="9413339319368951" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="7771297871355405" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="8069837481085053">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="8884458128054167" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="6928651349400155" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <event-block sid="7115603127211894">
+                    <conditions>
+                        <condition id="8" name="On mouse wheel" sid="4524701298432112" type="Mouse">
+                            <param id="0" name="Direction">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="3838833540223077" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <event-block sid="9864834109137956">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8184199053863654" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="2941082895464047" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="6020942311882356" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="6344516299304409" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <event-block sid="2821924431953328">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="686748161836453" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="7454087460505744" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="2329998632058688" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="1064772991586986" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="9861879105539217" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="1657746705848306">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="3248982945253317" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="7179882797032139" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>SPACE - Slows speed down to minimum</comment>
+                <event-block sid="8153942881373429">
+                    <conditions>
+                        <condition id="0" name="On click" sid="6295955029663659" type="Mouse">
+                            <param id="0" name="Mouse button">1</param>
+                            <param id="1" name="Click type">0</param>
+                        </condition>
+                        <condition id="-14" name="Compare variable" sid="7579302885330833" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Future Mode</comment>
+                        <event-block sid="5713873114690195">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="406844424966256" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-10" name="Set value" sid="4757441444094676" type="Player">
+                                    <param id="0" name="Instance variable">Speed</param>
+                                    <param id="1" name="Value">player.SpeedMin</param>
+                                </action>
+                                <action id="-17" name="Set layer scale" sid="3838218938044265" type="System">
+                                    <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                    <param id="1" name="Scale">200/player.Speed</param>
+                                </action>
+                                <action id="0" name="Play" sid="2930530064668201" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-bleep</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action behavior="CustomMovement" id="2" name="Set speed" sid="960656560315299" type="Player">
+                                    <param id="0" name="Which">0</param>
+                                    <param id="1" name="Speed">player.Speed</param>
+                                </action>
+                            </actions>
+                            <sub-events>
+                                <comment>Handle Slow effect</comment>
+                                <event-block sid="7114099734135244">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="5292229431690332" type="Player">
+                                            <param id="0" name="Instance variable">FXSlowNibble</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">0</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="562926391767778" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+                <comment>Mouse clicks after Game Over lead to Fade mode</comment>
+                <event-block sid="6502413277539289">
+                    <conditions>
+                        <condition id="1" name="On any click" sid="5309820397737719" type="Mouse" />
+                        <condition id="-14" name="Compare variable" sid="5848909668705721" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                        </condition>
+                        <condition id="-7" name="Compare instance variable" sid="3959568628115249" type="Player">
+                            <param id="0" name="Instance variable">GameOverTimer</param>
+                            <param id="1" name="Comparison">5</param>
+                            <param id="2" name="Value">100</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="0" name="Play" sid="7276972734856765" type="Audio">
+                            <param id="0" name="Audio file">nibbles-electrical-drone</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="6" name="Stop" sid="1820509079616713" type="Audio">
+                            <param id="0" name="Tag">&quot;ambiance&quot;</param>
+                        </action>
+                        <action id="-9" name="Set value" sid="7780263755817964" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Value">&quot;Entry&quot;</param>
+                        </action>
+                        <action id="-25" name="Go to layout (by name)" sid="9136042319462223" type="System">
+                            <param id="0" name="Layout">&quot;Entry&quot;</param>
+                        </action>
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="4009848757249957" title="Collision Checks">
+            <sub-events>
+                <comment>Nibbles collisions</comment>
+                <event-block sid="7540084971131066">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="9997768887563165" type="Player">
+                            <param id="0" name="Object">Nibbles</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="7597419462848142" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-11" name="Add to" sid="1889398872266596" type="Player">
+                            <param id="0" name="Instance variable">TrailLength</param>
+                            <param id="1" name="Value">player.TrailIncrement</param>
+                        </action>
+                        <action id="0" name="Play" sid="7298093251312691" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="-11" name="Add to" sid="4960960106357095" type="Player">
+                            <param id="0" name="Instance variable">Score</param>
+                            <param id="1" name="Value">player.ScoreIncrement</param>
+                        </action>
+                        <action id="0" name="Set text" sid="5509808200114872" type="TextScore">
+                            <param id="0" name="Text">&quot;Score: &quot; &amp; player.Score</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="6572438905747971" type="TextScore">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">1.0</param>
+                        </action>
+                        <action id="-9" name="Destroy" sid="6793153319451583" type="Nibbles" />
+                    </actions>
+                    <sub-events>
+                        <comment>Subtract from NibbleEveryXSeconds so that more Nibbles get created as Player gets more Nibbles</comment>
+                        <event-block sid="9510214603729977">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="1118140298808852" type="Player">
+                                    <param id="0" name="Instance variable">NibbleEveryXSeconds</param>
+                                    <param id="1" name="Comparison">4</param>
+                                    <param id="2" name="Value">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="770868352831981" type="Player">
+                                    <param id="0" name="Instance variable">NibbleEveryXSeconds</param>
+                                    <param id="1" name="Value">1</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Add a cool effect using Nibblets</comment>
+                        <event-block sid="2826008916456611">
+                            <conditions>
+                                <condition id="-10" name="For" sid="480723002316812" type="System">
+                                    <param id="0" name="Name">&quot;Random Nibblets&quot;</param>
+                                    <param id="1" name="Start index">1</param>
+                                    <param id="2" name="End index">10</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="0" name="Spawn another object" sid="3492504811798721" type="Player">
+                                    <param id="0" name="Object">Nibblets</param>
+                                    <param id="1" name="Layer">0</param>
+                                    <param id="2" name="Image point">0</param>
+                                </action>
+                                <action id="-10" name="Set value" sid="4362682321681524" type="Nibblets">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">int(random(360))</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Make a new Nibble</comment>
+                        <include>Create Nibbles</include>
+                    </sub-events>
+                </event-block>
+                <comment>Bounds collisions</comment>
+                <event-block sid="5996833083722111">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="2872131584619575" type="Player">
+                            <param id="0" name="Object">Bounds</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="7981701381038593" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-9" name="Set value" sid="5275300681597523" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Value">&quot;Game Over&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="1025936552401114" type="Audio">
+                            <param id="0" name="Audio file">nibbles-shock</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="0" name="Play" sid="3269114234871342" type="Audio">
+                            <param id="0" name="Audio file">nibbles</param>
+                            <param id="2" name="Loop">0</param>
+                            <param id="3" name="Volume">0</param>
+                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                        </action>
+                        <action id="5" name="Set playback rate" sid="576777302661644" type="Audio">
+                            <param id="0" name="Tag">&quot;ambiance&quot;</param>
+                            <param id="1" name="Playback rate">0.5</param>
+                        </action>
+                        <action id="1" name="Set looping" sid="5555621049583261" type="Audio">
+                            <param id="0" name="Tag">&quot;drone&quot;</param>
+                            <param id="1" name="State">1</param>
+                        </action>
+                        <action behavior="Flash" id="0" name="Flash" sid="221210208161106" type="TextScore">
+                            <param id="0" name="&apos;On&apos; time">0.1</param>
+                            <param id="1" name="&apos;Off&apos; time">0.1</param>
+                            <param id="2" name="Duration">3</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <comment>Trail collisions - first collisions will set boolean Safe to false, to allow for safety cushion</comment>
+                <event-block sid="4391705445620288">
+                    <conditions>
+                        <condition id="1" inverted="1" name="Is overlapping another object" sid="7831719145883179" type="Trail">
+                            <param id="0" name="Object">Player</param>
+                        </condition>
+                    </conditions>
+                    <actions>
+                        <action id="-13" name="Set boolean" sid="3638242024437112" type="Trail">
+                            <param id="0" name="Instance variable">Safe</param>
+                            <param id="1" name="Value">0</param>
+                        </action>
+                    </actions>
+                </event-block>
+                <event-block sid="4474823322725569">
+                    <conditions>
+                        <condition id="0" name="On collision with another object" sid="7480309142039951" type="Player">
+                            <param id="0" name="Object">Trail</param>
+                        </condition>
+                        <condition id="-14" inverted="1" name="Compare variable" sid="6691698418134128" type="System">
+                            <param id="0" name="Variable">Mode</param>
+                            <param id="1" name="Comparison">0</param>
+                            <param id="2" name="Value">&quot;Game Over&quot;</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Is trail outside of safety cushion and is its opacity within range for player to die from?</comment>
+                        <event-block sid="6388685178317722">
+                            <conditions>
+                                <condition id="-8" inverted="1" name="Is boolean instance variable set" sid="6196503490319071" type="Trail">
+                                    <param id="0" name="Instance variable">Safe</param>
+                                </condition>
+                                <condition id="-10" name="Compare opacity" sid="35398320104252" type="Trail">
+                                    <param id="0" name="Comparison">5</param>
+                                    <param id="1" name="Opacity">5</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-9" name="Set value" sid="8682684544322195" type="System">
+                                    <param id="0" name="Variable">Mode</param>
+                                    <param id="1" name="Value">&quot;Game Over&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="1457925367924782" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-shock</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="0" name="Play" sid="3726648771767288" type="Audio">
+                                    <param id="0" name="Audio file">nibbles</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                </action>
+                                <action id="5" name="Set playback rate" sid="2683101057231931" type="Audio">
+                                    <param id="0" name="Tag">&quot;ambiance&quot;</param>
+                                    <param id="1" name="Playback rate">0.5</param>
+                                </action>
+                                <action id="1" name="Set looping" sid="9190977572132118" type="Audio">
+                                    <param id="0" name="Tag">&quot;drone&quot;</param>
+                                    <param id="1" name="State">1</param>
+                                </action>
+                                <action behavior="Flash" id="0" name="Flash" sid="9822124907137864" type="TextScore">
+                                    <param id="0" name="&apos;On&apos; time">0.1</param>
+                                    <param id="1" name="&apos;Off&apos; time">0.1</param>
+                                    <param id="2" name="Duration">3</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3850881225274452" title="Handle Fades">
+            <sub-events>
+                <comment>Handle various background fades</comment>
+                <event-block sid="9204556591100253">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="8919733501222341" type="GridAlternate" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="3925035821158626" type="GridAlternate" />
+                    </actions>
+                </event-block>
+                <event-block sid="7844392570095033">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="7603219170468007" type="Grid" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="954612832678293" type="Grid" />
+                    </actions>
+                </event-block>
+                <event-block sid="665224394791326">
+                    <conditions>
+                        <condition behavior="Fade" id="0" name="On fade-out finished" sid="2035648195846255" type="TextInfo" />
+                    </conditions>
+                    <actions>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="8179391431359519" type="TextInfo" />
+                    </actions>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="3926022788820887" title="Touch Events">
+            <sub-events>
+                <event-block sid="7480618286682748">
+                    <conditions>
+                        <condition id="4" name="Is touching object" sid="9195818780478361" type="Touch">
+                            <param id="0" name="Object">nibbletouchcontrol</param>
+                        </condition>
+                    </conditions>
+                    <actions />
+                    <sub-events>
+                        <comment>Up</comment>
+                        <event-block sid="2715801521398898">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="4326699727113045" type="nibbletouchcontrol">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Up&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5586470001243559">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="8954098354917446" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="6626640126272641" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                        </action>
+                                        <action id="-17" name="Set layer scale" sid="8509098558429334" type="System">
+                                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                            <param id="1" name="Scale">200/player.Speed</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="6602521998830865" type="Audio">
+                                            <param id="0" name="Audio file">nibbles-bleep</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="9092169366343569">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="8468193338598957" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="2391651647123134" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.Speed + player.SpeedIncrement</param>
+                                        </action>
+                                        <action id="-17" name="Set layer scale" sid="5923225933719454" type="System">
+                                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                            <param id="1" name="Scale">200/player.Speed</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="9290463938963486" type="Audio">
+                                            <param id="0" name="Audio file">nibbles-bleep</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="4594117206315379" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.Speed</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <comment>Handle Slow effect</comment>
+                                        <event-block sid="3045860658146086">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="4171610564054173" type="Player">
+                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="1343622332392551" type="Player">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Down</comment>
+                        <event-block sid="6679666531187101">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="7374732076352528" type="nibbletouchcontrol">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Down&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="6505623441967775">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="3071235386075445" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Classic&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="4161492372860871" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                        </action>
+                                        <action id="-17" name="Set layer scale" sid="7986898916955429" type="System">
+                                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                            <param id="1" name="Scale">200/player.Speed</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="7565184979799477" type="Audio">
+                                            <param id="0" name="Audio file">nibbles-bleep</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                                <event-block sid="483586989167406">
+                                    <conditions>
+                                        <condition id="-14" name="Compare variable" sid="2463545539672447" type="System">
+                                            <param id="0" name="Variable">Type</param>
+                                            <param id="1" name="Comparison">0</param>
+                                            <param id="2" name="Value">&quot;Future&quot;</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="-10" name="Set value" sid="1601788019670445" type="Player">
+                                            <param id="0" name="Instance variable">Speed</param>
+                                            <param id="1" name="Value">player.Speed - player.SpeedIncrement</param>
+                                        </action>
+                                        <action id="-17" name="Set layer scale" sid="5617910847316203" type="System">
+                                            <param id="0" name="Layer">&quot;Grid&quot;</param>
+                                            <param id="1" name="Scale">200/player.Speed</param>
+                                        </action>
+                                        <action id="0" name="Play" sid="3139371050498017" type="Audio">
+                                            <param id="0" name="Audio file">nibbles-bleep</param>
+                                            <param id="2" name="Loop">0</param>
+                                            <param id="3" name="Volume">0</param>
+                                            <param id="1" name="Tag (optional)">&quot;&quot;</param>
+                                        </action>
+                                        <action behavior="CustomMovement" id="2" name="Set speed" sid="3860305907315857" type="Player">
+                                            <param id="0" name="Which">0</param>
+                                            <param id="1" name="Speed">player.Speed</param>
+                                        </action>
+                                    </actions>
+                                    <sub-events>
+                                        <comment>Handle Slow effect</comment>
+                                        <event-block sid="5038497707677072">
+                                            <conditions>
+                                                <condition id="-7" name="Compare instance variable" sid="6948268261822222" type="Player">
+                                                    <param id="0" name="Instance variable">FXSlowNibble</param>
+                                                    <param id="1" name="Comparison">4</param>
+                                                    <param id="2" name="Value">0</param>
+                                                </condition>
+                                            </conditions>
+                                            <actions>
+                                                <action behavior="CustomMovement" id="2" name="Set speed" sid="6115412402935175" type="Player">
+                                                    <param id="0" name="Which">0</param>
+                                                    <param id="1" name="Speed">player.CustomMovement.Speed / 2</param>
+                                                </action>
+                                            </actions>
+                                        </event-block>
+                                    </sub-events>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <comment>Right</comment>
+                        <event-block sid="9998365276623594">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="9094179921759488" type="nibbletouchcontrol">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Right&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-11" name="Add to" sid="7777643846516583" type="Player">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                </action>
+                                <action id="0" name="Play" sid="1303891868706485" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                        <comment>Left</comment>
+                        <event-block sid="8422853764194411">
+                            <conditions>
+                                <condition id="-7" name="Compare instance variable" sid="2669413761404996" type="nibbletouchcontrol">
+                                    <param id="0" name="Instance variable">Value</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Left&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions>
+                                <action id="-12" name="Subtract from" sid="469922294020517" type="Player">
+                                    <param id="0" name="Instance variable">Direction</param>
+                                    <param id="1" name="Value">player.DirectionThreshold</param>
+                                </action>
+                                <action id="0" name="Play" sid="144823199730318" type="Audio">
+                                    <param id="0" name="Audio file">nibbles-turn</param>
+                                    <param id="2" name="Loop">0</param>
+                                    <param id="3" name="Volume">0</param>
+                                    <param id="1" name="Tag (optional)">&quot;turn&quot;</param>
+                                </action>
+                            </actions>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+        <event-group description="" sid="6358839192857457" title="End of Layout">
+            <sub-events>
+                <event-block sid="9666130122027363">
+                    <conditions>
+                        <condition id="-3" name="On end of layout" sid="6954585703783846" type="System" />
+                    </conditions>
+                    <actions>
+                        <action id="-15" name="Set visible" sid="5015917322323751" type="FadeIn">
+                            <param id="0" name="Visibility">1</param>
+                        </action>
+                        <action behavior="Fade" id="0" name="Restart fade" sid="6280387542608571" type="FadeIn" />
+                    </actions>
+                    <sub-events>
+                        <event-block sid="4122345491031722">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="8071405214998851" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Classic&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="5365288960961175">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="222936243461868" type="Player">
+                                            <param id="0" name="Instance variable">Score</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">HighScoreClassic</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set local value" sid="7994603816909625" type="WebStorage">
+                                            <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Classic&quot;</param>
+                                            <param id="1" name="Value">HighScoreClassic</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                        <event-block sid="7797024962289228">
+                            <conditions>
+                                <condition id="-14" name="Compare variable" sid="6359167626967035" type="System">
+                                    <param id="0" name="Variable">Type</param>
+                                    <param id="1" name="Comparison">0</param>
+                                    <param id="2" name="Value">&quot;Future&quot;</param>
+                                </condition>
+                            </conditions>
+                            <actions />
+                            <sub-events>
+                                <event-block sid="700236079790302">
+                                    <conditions>
+                                        <condition id="-7" name="Compare instance variable" sid="2403714605114572" type="Player">
+                                            <param id="0" name="Instance variable">Score</param>
+                                            <param id="1" name="Comparison">4</param>
+                                            <param id="2" name="Value">HighScoreFuture</param>
+                                        </condition>
+                                    </conditions>
+                                    <actions>
+                                        <action id="0" name="Set local value" sid="7122149799908097" type="WebStorage">
+                                            <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Future&quot;</param>
+                                            <param id="1" name="Value">HighScoreFuture</param>
+                                        </action>
+                                    </actions>
+                                </event-block>
+                            </sub-events>
+                        </event-block>
+                    </sub-events>
+                </event-block>
+            </sub-events>
+        </event-group>
+    </events>
+</c2eventsheet>
