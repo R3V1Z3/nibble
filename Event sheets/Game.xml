@@ -2078,7 +2078,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="0" name="Set local value" sid="7994603816909625" type="WebStorage">
-                                            <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Classic&quot;</param>
+                                            <param id="0" name="Key">&quot;R3V1Z3 Nibble - High Score - Classic&quot;</param>
                                             <param id="1" name="Value">HighScoreClassic</param>
                                         </action>
                                     </actions>
@@ -2105,7 +2105,7 @@
                                     </conditions>
                                     <actions>
                                         <action id="0" name="Set local value" sid="7122149799908097" type="WebStorage">
-                                            <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Future&quot;</param>
+                                            <param id="0" name="Key">&quot;R3V1Z3 Nibble - High Score - Future&quot;</param>
                                             <param id="1" name="Value">HighScoreFuture</param>
                                         </action>
                                     </actions>

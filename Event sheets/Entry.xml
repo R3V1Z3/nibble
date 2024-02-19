@@ -58,65 +58,65 @@
                         <event-block sid="1227289106110059">
                             <conditions>
                                 <condition id="3" name="Local key exists" sid="482568811412239" type="WebStorage">
-                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Volume FX&quot;</param>
+                                    <param id="0" name="Key">&quot;R3V1Z3 Nibble - Volume FX&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="7805644803479293" type="System">
                                     <param id="0" name="Variable">VolumeFX</param>
-                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Volume FX&quot;)</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;R3V1Z3 Nibble - Volume FX&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
                         <event-block sid="8915272565374167">
                             <conditions>
                                 <condition id="3" name="Local key exists" sid="927896012920293" type="WebStorage">
-                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Volume Ambiance&quot;</param>
+                                    <param id="0" name="Key">&quot;R3V1Z3 Nibble - Volume Ambiance&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="5619738814720912" type="System">
                                     <param id="0" name="Variable">VolumeAmbiance</param>
-                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Volume Ambiance&quot;)</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;R3V1Z3 Nibble - Volume Ambiance&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
                         <event-block sid="1118734959579366">
                             <conditions>
                                 <condition id="3" name="Local key exists" sid="6273521913846138" type="WebStorage">
-                                    <param id="0" name="Key">&quot;Ugotsta Nibble - Touch Controls&quot;</param>
+                                    <param id="0" name="Key">&quot;R3V1Z3 Nibble - Touch Controls&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="6787408157194873" type="System">
                                     <param id="0" name="Variable">TouchControls</param>
-                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - Touch Controls&quot;)</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;R3V1Z3 Nibble - Touch Controls&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
                         <event-block sid="4253648713513485">
                             <conditions>
                                 <condition id="3" name="Local key exists" sid="2950998944909196" type="WebStorage">
-                                    <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Classic&quot;</param>
+                                    <param id="0" name="Key">&quot;R3V1Z3 Nibble - High Score - Classic&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="7109580392385548" type="System">
                                     <param id="0" name="Variable">HighScoreClassic</param>
-                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - High Score - Classic&quot;)</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;R3V1Z3 Nibble - High Score - Classic&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>
                         <event-block sid="7379790116679164">
                             <conditions>
                                 <condition id="3" name="Local key exists" sid="5248371582805952" type="WebStorage">
-                                    <param id="0" name="Key">&quot;Ugotsta Nibble - High Score - Future&quot;</param>
+                                    <param id="0" name="Key">&quot;R3V1Z3 Nibble - High Score - Future&quot;</param>
                                 </condition>
                             </conditions>
                             <actions>
                                 <action id="-9" name="Set value" sid="6081491340548686" type="System">
                                     <param id="0" name="Variable">HighScoreFuture</param>
-                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;Ugotsta Nibble - High Score - Future&quot;)</param>
+                                    <param id="1" name="Value">WebStorage.LocalValue(&quot;R3V1Z3 Nibble - High Score - Future&quot;)</param>
                                 </action>
                             </actions>
                         </event-block>

@@ -1139,15 +1139,15 @@
                         </action>
                         <action behavior="Fade" id="0" name="Restart fade" sid="5239646418824009" type="FadeIn" />
                         <action id="0" name="Set local value" sid="8667223854693133" type="WebStorage">
-                            <param id="0" name="Key">&quot;Ugotsta Nibble - Volume FX&quot;</param>
+                            <param id="0" name="Key">&quot;R3V1Z3 Nibble - Volume FX&quot;</param>
                             <param id="1" name="Value">VolumeFX</param>
                         </action>
                         <action id="0" name="Set local value" sid="8382291912562254" type="WebStorage">
-                            <param id="0" name="Key">&quot;Ugotsta Nibble - Volume Ambiance&quot;</param>
+                            <param id="0" name="Key">&quot;R3V1Z3 Nibble - Volume Ambiance&quot;</param>
                             <param id="1" name="Value">VolumeAmbiance</param>
                         </action>
                         <action id="0" name="Set local value" sid="3851187808086535" type="WebStorage">
-                            <param id="0" name="Key">&quot;Ugotsta Nibble - Touch Controls&quot;</param>
+                            <param id="0" name="Key">&quot;R3V1Z3 Nibble - Touch Controls&quot;</param>
                             <param id="1" name="Value">TouchControls</param>
                         </action>
                     </actions>
